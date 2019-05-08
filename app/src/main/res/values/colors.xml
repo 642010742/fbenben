@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="province_line_border">#C7C7C7</color>
+
+    <color name="ffffff">#ffffff</color>
+    <color name="ff0000">#ff0000</color>
+    <color name="f4f4f4">#f4f4f4</color>
+    <color name="ff4a3c">#ff4a3c</color>
+    <color name="c1c1c1d">#1c1c1d</color>
+    <color name="ffedec">#ffedec</color>
+    <color name="ff564d">#ff564d</color>
+    <color name="adadad">#adadad</color>
+    <color name="f6fafb">#f6fafb</color>
+    <color name="c333333">#333333</color>
+    <color name="c323333">#323333</color>
+    <color name="e9493e">#e9493e</color>
+    <color name="e0e0e0">#e0e0e0</color>
+    <color name="c9b9b9b">#9b9b9b</color>
+    <color name="c909090">#909090</color>
+    <color name="ff463c">#ff463c</color>
+    <color name="c525068">#525068</color>
+    <color name="ffb7b3">#ffb7b3</color>
+    <color name="fafafa">#fafafa</color>
+    <color name="f3f3f3">#f3f3f3</color>
+    <color name="c585858">#585858</color>
+    <color name="f1fef5">#f1fef5</color>
+    <color name="f5f5f5">#f5f5f5</color>
+    <color name="dcdcdc">#dcdcdc</color>
+    <color name="c222222">#222222</color>
+    <color name="c878787">#878787</color>
+    <color name="c6c6c6d">#6c6c6d</color>
+    <color name="c8c8c8">#c8c8c8</color>
+    <color name="fefefe">#fefefe</color>
+    <color name="cfcfcf">#cfcfcf</color>
+    <color name="c3caaff">#3caaff</color>
+    <color name="b7b8bd">#b7b8bd</color>
+    <color name="cbac73">#cbac73</color>
+    <color name="f1f1f1">#f1f1f1</color>
+    <color name="c80000000">#80000000</color>
+    <color name="eaeaea">#eaeaea</color>
+    <color name="c3c3c3d">#3c3c3d</color>
+    <color name="fff6ca">#fff6ca</color>
+    <color name="f75041">#f75041</color>
+    <color name="ffc222">#ffc222</color>
+
+</resources>

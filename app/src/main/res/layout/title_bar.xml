@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools">
+    <data>
+        <import type="library.core.TitleBackgroudColorLoad"/>
+        <import type="android.view.View"/>
+        <variable
+            name="title"
+            type="library.commonModel.TitleOptions">
+        </variable>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <include
+            android:id="@+id/baseLayoutTitle"
+            layout="@layout/chlid_title"
+            bind:title="@{title}"/>
+  <include
+      android:id="@+id/netErr"
+      android:visibility="gone"
+      layout="@layout/layout_no_netword"/>
+    </LinearLayout>
+</layout>

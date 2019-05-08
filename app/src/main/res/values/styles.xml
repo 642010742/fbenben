@@ -1,0 +1,284 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AnimationBottomFade">
+        <item name="android:windowEnterAnimation">@anim/in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/out_bottom</item>
+    </style>
+    <!-- 通用底部细线-->
+    <style name="line_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dim1</item>
+        <item name="android:background">#dcdcdd</item>
+        <item name="android:layout_marginLeft">@dimen/dim30</item>
+    </style>
+
+
+    <style name="share_anim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/pop_enter_anim</item>
+        <item name="android:windowExitAnimation">@anim/pop_exit_anim</item>
+    </style>
+
+    <style name="line_all_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dim1</item>
+        <item name="android:background">#eaeaea</item>
+    </style>
+
+
+    <!--自定义dialog背景全透明无边框theme -->
+    <style name="MyDialog" parent="android:style/Theme.Dialog">
+        <!--背景颜色及和透明程度-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--是否去除标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!--是否去除边框-->
+        <item name="android:windowFrame">@null</item>
+        <!--是否浮现在activity之上-->
+        <item name="android:windowIsFloating">true</item>
+        <!--是否模糊-->
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <!--自定义dialog背景全透明无边框theme -->
+    <style name="ImageShowDialog" parent="android:style/Theme.Dialog">
+        <!--背景颜色及和透明程度-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--是否去除标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!--是否去除边框-->
+        <item name="android:windowFrame">@null</item>
+        <!--是否浮现在activity之上-->
+        <item name="android:windowIsFloating">true</item>
+        <!--是否模糊-->
+        <item name="android:backgroundDimEnabled">true</item>
+
+        <item name="android:background">@null</item>
+    </style>
+
+
+    <!--分类模块 fragment textStyle-->
+
+    <style name="BaseStyle_wrap_content">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="BaseStyle_match_parent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!--z 大小 c 颜色-->
+    <style name="fg_classify_tv_z_12sp_c_1c1c1d" parent="BaseStyle_wrap_content">
+        <item name="android:textSize">@dimen/txt24</item>
+        <item name="android:textColor">@color/c1c1c1d</item>
+    </style>
+
+    <!--z 大小 c 颜色-->
+    <style name="fg_classify_tv_z_13sp_c_1c1c1d" parent="BaseStyle_wrap_content">
+        <item name="android:textSize">@dimen/txt26</item>
+        <item name="android:textColor">@color/c1c1c1d</item>
+    </style>
+
+    <!--z 大小 c 颜色-->
+    <style name="fg_classify_tv_z_13sp_c_3c3c3d" parent="BaseStyle_wrap_content">
+        <item name="android:textSize">@dimen/txt26</item>
+        <item name="android:textColor">@color/c1c1c1d</item>
+    </style>
+
+    <!--z 大小 c 颜色-->
+    <style name="fg_classify_tv_z_10sp_c_1c1c1d" parent="BaseStyle_wrap_content">
+        <item name="android:textSize">@dimen/txt20</item>
+        <item name="android:textColor">@color/c1c1c1d</item>
+    </style>
+
+    <!--z 大小 c 颜色 bold 加粗-->
+    <style name="fg_classify_tv_z_14sp_c_1c1c1d_bold" parent="BaseStyle_wrap_content">
+        <item name="android:textSize">@dimen/txt28</item>
+        <item name="android:textColor">@color/c1c1c1d</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="classify_details_z_14sp_c_1c1c1d" parent="BaseStyle_wrap_content">
+        <item name="android:textSize">@dimen/txt28</item>
+        <item name="android:textColor">@color/c1c1c1d</item>
+    </style>
+
+    <style name="classify_details_z_14sp_c_ffffff" parent="BaseStyle_wrap_content">
+        <item name="android:textSize">@dimen/txt28</item>
+        <item name="android:textColor">@color/ffffff</item>
+    </style>
+
+    <style name="classify_details_z_15sp_c_1c1c1d_bold" parent="BaseStyle_wrap_content">
+        <item name="android:textSize">@dimen/txt30</item>
+        <item name="android:textColor">@color/c1c1c1d</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="fg_classify_tv_z_14sp_c_ff463c" parent="BaseStyle_wrap_content">
+        <item name="android:textSize">@dimen/txt28</item>
+        <item name="android:textColor">@color/ff463c</item>
+    </style>
+    <style name="classify_details_z_15sp_c_222222" parent="BaseStyle_wrap_content">
+        <item name="android:textSize">@dimen/txt30</item>
+        <item name="android:textColor">@color/c222222</item>
+    </style>
+
+    <style name="classify_details_z_11sp_c_222222" parent="BaseStyle_wrap_content">
+        <item name="android:textSize">@dimen/txt22</item>
+        <item name="android:textColor">@color/c222222</item>
+    </style>
+
+    <style name="classify_details_z_15sp_c_222222_bold" parent="BaseStyle_wrap_content">
+        <item name="android:textSize">@dimen/txt30</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/c222222</item>
+    </style>
+
+    <style name="classify_details_z_23sp_c_ff463c_bold" parent="BaseStyle_wrap_content">
+        <item name="android:textSize">@dimen/txt46</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/ff463c</item>
+    </style>
+
+    <style name="classify_details_z_13sp_c_878787" parent="BaseStyle_wrap_content">
+        <item name="android:textSize">@dimen/txt26</item>
+        <item name="android:textColor">@color/c878787</item>
+    </style>
+
+    <style name="classify_details_z_13sp_c_fffff" parent="BaseStyle_wrap_content">
+        <item name="android:textSize">@dimen/txt26</item>
+        <item name="android:textColor">@color/ffffff</item>
+    </style>
+
+    <style name="classify_details_z_15sp_c_ff643c" parent="BaseStyle_match_parent">
+        <item name="android:textSize">@dimen/txt30</item>
+        <item name="android:textColor">@color/ff463c</item>
+    </style>
+
+
+
+    <style name="classify_details_z_14sp_c_878787" parent="BaseStyle_wrap_content">
+        <item name="android:textSize">@dimen/txt28</item>
+        <item name="android:textColor">@color/c878787</item>
+    </style>
+
+    <style name="classify_details_z_15sp_c_fffff" parent="BaseStyle_wrap_content">
+        <item name="android:textSize">@dimen/txt30</item>
+        <item name="android:textColor">@color/ffffff</item>
+    </style>
+
+    <style name="classify_details_z_12sp_c_878787" parent="BaseStyle_wrap_content">
+        <item name="android:textSize">@dimen/txt24</item>
+        <item name="android:textColor">@color/c878787</item>
+    </style>
+
+    <style name="fg_classify_tv_z_17sp_c_1c1c1d_bold" parent="BaseStyle_wrap_content">
+        <item name="android:textSize">@dimen/txt34</item>
+        <item name="android:textColor">@color/c1c1c1d</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="fg_classify_tv_z_16sp_c_1c1c1d" parent="BaseStyle_wrap_content">
+        <item name="android:textSize">@dimen/txt32</item>
+        <item name="android:textColor">@color/c1c1c1d</item>
+    </style>
+
+    <style name="fg_classify_tv_z_12sp_c_ff463" parent="BaseStyle_wrap_content">
+        <item name="android:textSize">@dimen/txt24</item>
+        <item name="android:textColor">@color/ff463c</item>
+    </style>
+
+
+
+    <!-- 个人中心模块 -->
+    <!-- TextView登录/注册 -->
+    <style name="mine_tv_z_34sp_c_ffffff" parent="BaseStyle_wrap_content">
+        <item name="android:textSize">@dimen/txt34</item>
+        <item name="android:textColor">@color/ffffff</item>
+    </style>
+
+    <style name="mine_tv_z_26sp_c_c3333" parent="BaseStyle_wrap_content">
+        <item name="android:textSize">@dimen/txt26</item>
+        <item name="android:textColor">@color/c333333</item>
+    </style>
+    <!-- 我的订单tablayout style -->
+    <style name="TabLayoutTextSize">
+        <item name="android:textSize">16sp</item>
+    </style>
+    <!--设置Tablayout字体加粗-->
+    <style name="TabLayoutTextStyle">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="sys_tv_z_32sp_c_c3333" parent="BaseStyle_wrap_content">
+        <item name="android:textSize">@dimen/txt32</item>
+        <item name="android:textColor">@color/c333333</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="sys_tv_z_24sp_c_adadad" parent="BaseStyle_wrap_content">
+        <item name="android:textSize">@dimen/txt24</item>
+        <item name="android:textColor">@color/adadad</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="sys_tv_z_26sp_c_c909090" parent="BaseStyle_wrap_content">
+        <item name="android:textSize">@dimen/txt26</item>
+        <item name="android:textColor">@color/c909090</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/dim20</item>
+    </style>
+
+
+
+    <style name="sys_img" parent="BaseStyle_wrap_content">
+        <item name="android:layout_width">@dimen/dim100</item>
+        <item name="android:layout_height">@dimen/dim100</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginLeft">@dimen/dim30</item>
+    </style>
+
+
+
+    <style name="sys_ll" parent="BaseStyle_wrap_content">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginLeft">@dimen/dim32</item>
+        <item name="android:layout_marginRight">@dimen/dim25</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="sys_lll" parent="BaseStyle_wrap_content">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+
+    <style name="Theme.Light.NoTitle.Dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowFrame">@null</item>
+    </style>
+
+    <style name="Theme.Light.NoTitle.NoShadow.Dialog" parent="Theme.Light.NoTitle.Dialog">
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+</resources>
