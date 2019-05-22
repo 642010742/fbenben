@@ -21,6 +21,7 @@ public class RequestBean implements Serializable {
 
     private String requestMethod = HttpConstants.METHOD_POST;
 
+    // post 请求方式 参数拼接 query
     private boolean postQuery = false;
 
     public boolean isPostQuery() {
@@ -57,6 +58,7 @@ public class RequestBean implements Serializable {
         this.requestMethod = requestMethod;
     }
 
+    // 是否是上传文件
     public boolean isDownLoad() {
         return isDownLoad;
     }

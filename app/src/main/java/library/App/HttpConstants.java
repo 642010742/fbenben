@@ -18,6 +18,6 @@ public class HttpConstants {
     /**
      * 地址请求头
      */
-    public static String BASE_DEV_URL = "http://192.168.1.15:8081";
+    public static String BASE_DEV_URL = "";
 
 }
