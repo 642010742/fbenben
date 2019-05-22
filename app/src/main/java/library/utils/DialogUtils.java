@@ -1,49 +1,66 @@
 package library.utils;
 
 
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.databinding.DataBindingUtil;
+import android.view.Display;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+
+import com.dwz.mvvmdemo.R;
+import com.dwz.mvvmdemo.databinding.DialogItemBinding;
+
+import library.commonModel.DialogModel;
+import library.listener.CommonDialogListener;
+
 public class DialogUtils {
 
-//    /**
-//     *  通用弹框
-//     * @param context
-//     */
-//    public static void showCommonDialog(final Activity context, DialogModel shareModel, final CommonDialogListener commonDialogListener) {
-//        final Dialog dialog = new Dialog(context, R.style.MyDialog);
-//        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//        View view = layoutInflater.inflate(R.layout.dialog_item,null);
-//        DialogItemBinding dialogShareChooseBinding = DataBindingUtil.bind(view);
-//        dialogShareChooseBinding.setModel(shareModel);
-//        dialog.setContentView(dialogShareChooseBinding.getRoot());
-//        Window dialogWindow = dialog.getWindow();
-//        WindowManager m = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-//        Display d = m.getDefaultDisplay(); // 获取屏幕宽、高用
-//        WindowManager.LayoutParams p = dialogWindow.getAttributes(); // 获取对话框当前的参数值
-//        p.width = (int) (d.getWidth() * 0.9); // 宽度设置为屏幕的0.65
-//        p.height = p.WRAP_CONTENT;
-//        dialogWindow.setGravity(Gravity.CENTER);
-//        dialog.setCanceledOnTouchOutside(true);
-//        dialog.setCancelable(true);
-//        PopWindowHelper.backgroundAlpha(context,0.6f);
-//        dialogShareChooseBinding.txCancelChangeName.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                dialog.dismiss();
-//                PopWindowHelper.backgroundAlpha(context,1f);
-//                commonDialogListener.cancel("");
-//            }
-//        });
-//
-//        dialogShareChooseBinding.txSureChangeName.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                dialog.dismiss();
-//                PopWindowHelper.backgroundAlpha(context,1f);
-//                commonDialogListener.sure("");
-//            }
-//        });
-//        dialog.show();
-//        dialogWindow.setAttributes(p);
-//    }
+    /**
+     *  通用弹框
+     * @param context
+     */
+    public static void showCommonDialog(final Activity context, DialogModel shareModel, final CommonDialogListener commonDialogListener) {
+        final Dialog dialog = new Dialog(context, R.style.MyDialog);
+        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = layoutInflater.inflate(R.layout.dialog_item,null);
+        DialogItemBinding dialogShareChooseBinding = DataBindingUtil.bind(view);
+        dialogShareChooseBinding.setModel(shareModel);
+        dialog.setContentView(dialogShareChooseBinding.getRoot());
+        Window dialogWindow = dialog.getWindow();
+        WindowManager m = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display d = m.getDefaultDisplay(); // 获取屏幕宽、高用
+        WindowManager.LayoutParams p = dialogWindow.getAttributes(); // 获取对话框当前的参数值
+        p.width = (int) (d.getWidth() * 0.9); // 宽度设置为屏幕的0.65
+        p.height = p.WRAP_CONTENT;
+        dialogWindow.setGravity(Gravity.CENTER);
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.setCancelable(true);
+        PopWindowHelper.backgroundAlpha(context,0.6f);
+        dialogShareChooseBinding.txCancelChangeName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                PopWindowHelper.backgroundAlpha(context,1f);
+                commonDialogListener.cancel("");
+            }
+        });
+
+        dialogShareChooseBinding.txSureChangeName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                PopWindowHelper.backgroundAlpha(context,1f);
+                commonDialogListener.sure("");
+            }
+        });
+        dialog.show();
+        dialogWindow.setAttributes(p);
+    }
 //
 //
 //    /**
