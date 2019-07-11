@@ -3,7 +3,7 @@
     <data>
         <variable
             name="vm"
-            type="com.dwz.mvvmdemo.vm.TestVModel"/>
+            type="com.dwz.mvvmdemo.vm.MainVModel"/>
     </data>
     <RelativeLayout
         android:layout_width="match_parent"

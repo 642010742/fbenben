@@ -26,4 +26,8 @@ public class MainVModel extends BaseVModel<ActivityMainBinding> {
         }
     }
 
+    @Override
+    public void initPresenter() {
+
+    }
 }

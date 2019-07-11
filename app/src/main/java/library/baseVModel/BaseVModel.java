@@ -4,16 +4,10 @@ import android.app.Activity;
 import android.databinding.BaseObservable;
 import android.databinding.ViewDataBinding;
 
-import com.dwz.mvvmdemo.presenter.IPresenter;
+import library.interfaces.IPresenter;
 
-import org.reactivestreams.Subscription;
-
-import io.reactivex.CompletableOnSubscribe;
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
 import library.commonModel.TitleOptions;
 import library.listener.IUpView;
-import library.listener.NoNetRefresh;
 import library.listener.TitleListener;
 
 import java.io.Serializable;

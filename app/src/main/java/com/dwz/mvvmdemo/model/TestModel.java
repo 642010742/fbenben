@@ -9,5 +9,4 @@ import library.commonModel.BaseModel;
  * @DWZ
  */
 public class TestModel extends BaseModel {
-
 }

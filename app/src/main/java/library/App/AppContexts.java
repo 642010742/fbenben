@@ -30,6 +30,7 @@ public class AppContexts extends Application {
         MultiDex.install(this);
         CrashHandler.getInstance().init(this);
         AppContext = getApplicationContext();
+        instance = this;
         sScale =  getResources().getDisplayMetrics().density;
         heightPixels = getResources().getDisplayMetrics().heightPixels;
         widthPixels = getResources().getDisplayMetrics().widthPixels;

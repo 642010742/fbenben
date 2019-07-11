@@ -1,8 +1,6 @@
 package com.dwz.mvvmdemo.commom.di.component;
 
 import com.dwz.mvvmdemo.ui.activity.MainActivity;
-import com.dwz.mvvmdemo.vm.MainVModel;
-import com.dwz.mvvmdemo.vm.TestVModel;
 
 import dagger.Component;
 

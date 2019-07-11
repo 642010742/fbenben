@@ -1,4 +1,4 @@
-package com.dwz.mvvmdemo.presenter;
+package library.interfaces;
 
 
 /**

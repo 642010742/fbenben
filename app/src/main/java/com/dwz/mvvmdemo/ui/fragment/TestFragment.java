@@ -1,7 +1,7 @@
 package com.dwz.mvvmdemo.ui.fragment;
 
 import com.dwz.mvvmdemo.R;
-import com.dwz.mvvmdemo.vm.TestVModel;
+import com.dwz.mvvmdemo.vm.MainVModel;
 
 import library.baseView.BaseFragment;
 
@@ -11,7 +11,7 @@ import library.baseView.BaseFragment;
  * @describe
  * @DWZ
  */
-public class TestFragment extends BaseFragment<TestVModel> {
+public class TestFragment extends BaseFragment<MainVModel> {
 
 
     @Override
@@ -21,7 +21,7 @@ public class TestFragment extends BaseFragment<TestVModel> {
 
     @Override
     protected Class getVModelClass() {
-        return TestVModel.class;
+        return MainVModel.class;
     }
 
     @Override
