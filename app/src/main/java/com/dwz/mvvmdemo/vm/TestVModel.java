@@ -1,8 +1,14 @@
 package com.dwz.mvvmdemo.vm;
 
+import com.dwz.mvvmdemo.HttpApiPath;
 import com.dwz.mvvmdemo.databinding.FragmentTestBinding;
+import com.dwz.mvvmdemo.model.TestModel;
+import com.dwz.mvvmdemo.presenter.Contract;
+import com.dwz.mvvmdemo.presenter.TestPresenter;
 
+import library.Retrofit_Http.RequBean.baseBean.BaseRequestBean;
 import library.baseVModel.BaseVModel;
+import library.utils.RequestBeanHelper;
 
 /**
  * @author dongweizhou
@@ -10,6 +16,32 @@ import library.baseVModel.BaseVModel;
  * @describe
  * @DWZ
  */
-public class TestVModel extends BaseVModel<FragmentTestBinding> {
+public class TestVModel extends BaseVModel<FragmentTestBinding> implements Contract.ICallBack<TestModel> {
+
+    private TestPresenter testPresenter;
+
+
+    @Override
+    public void success(TestModel testModel,int type) {
+
+    }
+
+    @Override
+    public void failOrErr(int code, String msg) {
+
+    }
+
+    @Override
+    public void initPresenter() {
+        testPresenter = new TestPresenter(mContext,this);
+    }
+
+    /**
+     * 请求
+     */
+    public void requestData(){
+        BaseRequestBean baseRequestBean = new BaseRequestBean();
+        testPresenter.loadData(RequestBeanHelper.POST(baseRequestBean, HttpApiPath.advert),0);
+    }
 
 }

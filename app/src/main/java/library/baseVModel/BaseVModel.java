@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.databinding.BaseObservable;
 import android.databinding.ViewDataBinding;
 
+import com.dwz.mvvmdemo.presenter.IPresenter;
+
 import org.reactivestreams.Subscription;
 
 import io.reactivex.CompletableOnSubscribe;
@@ -20,7 +22,7 @@ import java.io.Serializable;
  *  页面方法实现基类
  * @param <B>
  */
-public abstract class BaseVModel<B extends ViewDataBinding> extends BaseObservable implements Serializable,TitleListener {
+public abstract class BaseVModel<B extends ViewDataBinding> extends BaseObservable implements Serializable,TitleListener, IPresenter {
     // vvm
     public B bind;
 

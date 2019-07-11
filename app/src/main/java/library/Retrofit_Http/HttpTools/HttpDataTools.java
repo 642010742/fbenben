@@ -231,6 +231,7 @@ public class HttpDataTools {
         RxOkHttpLog.d("请求返回---------->" + responseBean.toString());
         if (TextUtils.isEmpty(responseBean.getData() + "")) {
             //数据请求成功，只是个成功标示
+            responseBean.state = ResponseBean.N0_EMPTY;
             return responseBean;
         }
         try {
@@ -245,6 +246,7 @@ public class HttpDataTools {
             }
 
         } catch (Exception e) {
+            responseBean.state = ResponseBean.N0_EMPTY;
 //            responseBean.setCode(1);
 //            responseBean.setMsg("数据解析失败！");
         }

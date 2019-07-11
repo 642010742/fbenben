@@ -11,6 +11,22 @@ import java.io.Serializable;
  */
 public class ResponseBean implements Serializable {
 
+    /**
+     *  返回为空(NULL)
+     */
+    public static int N0_EMPTY = -1;
+
+    /**
+     *  返回为空 (暂无数据)
+     */
+    public static int N0_DATA = -2;
+
+    /**
+     * 数据返回的状态
+     */
+    public int state;
+
+
     protected static final long serialVersionUID = 1L;
 
     private int code;
