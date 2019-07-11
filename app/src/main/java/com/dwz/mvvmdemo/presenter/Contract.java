@@ -16,7 +16,7 @@ public interface Contract {
     }
 
     interface ICallBack<T extends BaseModel>{
-        void success(T t,int type);
-        void failOrErr(int code,String msg);
+        void onSuccess(T t,int type);
+        void onError(int code,String msg);
     }
 }

@@ -34,13 +34,13 @@ public class TestPresenter implements Contract.IView{
             @Override
             public void onSuccess(ResponseBean responseBean) {
                 if (responseBean.state != ResponseBean.N0_EMPTY) {
-                    modelICallBack.success((TestModel) responseBean.getData(),type);
+                    modelICallBack.onSuccess((TestModel) responseBean.getData(),type);
                 }
             }
 
             @Override
             public void onError(int code, String msg) {
-                modelICallBack.failOrErr(code,msg);
+                modelICallBack.onError(code,msg);
             }
         });
     }

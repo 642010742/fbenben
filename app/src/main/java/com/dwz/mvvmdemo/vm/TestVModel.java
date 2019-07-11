@@ -21,15 +21,6 @@ public class TestVModel extends BaseVModel<FragmentTestBinding> implements Contr
     private TestPresenter testPresenter;
 
 
-    @Override
-    public void success(TestModel testModel,int type) {
-
-    }
-
-    @Override
-    public void failOrErr(int code, String msg) {
-
-    }
 
     @Override
     public void initPresenter() {
@@ -44,4 +35,13 @@ public class TestVModel extends BaseVModel<FragmentTestBinding> implements Contr
         testPresenter.loadData(RequestBeanHelper.POST(baseRequestBean, HttpApiPath.advert),0);
     }
 
+    @Override
+    public void onSuccess(TestModel testModel, int type) {
+
+    }
+
+    @Override
+    public void onError(int code, String msg) {
+
+    }
 }
