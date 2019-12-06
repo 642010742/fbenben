@@ -15,6 +15,7 @@ public class AppConstants {
     // 通知购物车fragment 请求数据
 
     public static final int REFRESH = 0xa3;
+    public static double defTotal ;
 
     public class IntentKey {
         //0-分类搜索 1-首页搜索 2-订单搜索 3-我的收藏搜索 4-我的关注搜索 5-商家信息 6-新增地址 7-编辑地址

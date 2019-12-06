@@ -4,6 +4,7 @@ package library.utils;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.databinding.DataBindingUtil;
 import android.view.Display;
 import android.view.Gravity;
@@ -16,6 +17,7 @@ import com.dwz.mvvmdemo.R;
 import com.dwz.mvvmdemo.databinding.DialogItemBinding;
 
 import library.commonModel.DialogModel;
+import library.listener.BtnDoneListener;
 import library.listener.CommonDialogListener;
 
 public class DialogUtils {
@@ -61,6 +63,55 @@ public class DialogUtils {
         dialog.show();
         dialogWindow.setAttributes(p);
     }
+
+
+    /**
+     * 设置权限弹框
+     */
+
+    public static Dialog setPremission(final Activity context, final BtnDoneListener btnDoneListener) {
+        final Dialog dialog = new Dialog(context, R.style.MyDialog);
+        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = layoutInflater.inflate(R.layout.dialog_set_premission, null);
+        dialog.setContentView(view);
+        Window dialogWindow = dialog.getWindow();
+        WindowManager m = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display d = m.getDefaultDisplay(); // 获取屏幕宽、高用
+        WindowManager.LayoutParams p = dialogWindow.getAttributes(); // 获取对话框当前的参数值
+        p.width = (int) (d.getWidth() * 0.8); // 宽度设置为屏幕的0.65
+        p.height = p.WRAP_CONTENT;
+        dialogWindow.setGravity(Gravity.CENTER);
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.setCancelable(true);
+        //PopWindowHelper.backgroundAlpha(context, 0.8f);
+
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                //PopWindowHelper.backgroundAlpha(context, 1f);
+            }
+        });
+
+
+        dialog.findViewById(R.id.cancel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.findViewById(R.id.toSet).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnDoneListener.done("");
+            }
+        });
+
+        dialog.show();
+        dialogWindow.setAttributes(p);
+        return dialog;
+    }
+
+
 //
 //
 //    /**

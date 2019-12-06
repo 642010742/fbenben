@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dim60"
+        android:layout_marginRight="@dimen/dim60"
+        android:background="@drawable/backgroud_white_8px"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="@dimen/dim60"
+            android:text="安装应用需要打开未知来源权限,"
+            android:textColor="@color/c333333"
+            android:textSize="@dimen/txt30" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingBottom="@dimen/dim30"
+            android:text="请去设置中开启权限"
+            android:textColor="@color/c333333"
+            android:textSize="@dimen/txt30" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim1"
+            android:layout_marginTop="@dimen/dim20"
+            android:background="#ebebeb" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim100">
+
+            <TextView
+                android:id="@+id/cancel"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dim86"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/cancel"
+                android:textColor="@color/c333333"
+                android:textSize="@dimen/txt34" />
+
+            <TextView
+                android:id="@+id/toSet"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dim86"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/go_setting"
+                android:textColor="#3259CE"
+                android:textSize="@dimen/txt34" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>
