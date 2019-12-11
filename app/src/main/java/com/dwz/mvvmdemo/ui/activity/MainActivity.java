@@ -3,7 +3,7 @@ package com.dwz.mvvmdemo.ui.activity;
 import android.view.View;
 
 import com.dwz.mvvmdemo.R;
-import com.dwz.mvvmdemo.commom.di.component.DaggerDPComponent;
+//import com.dwz.mvvmdemo.commom.di.component.DaggerDPComponent;
 import com.dwz.mvvmdemo.ui.fragment.TestFragment;
 import com.dwz.mvvmdemo.vm.MainVModel;
 
@@ -37,10 +37,10 @@ public class MainActivity extends BaseActivity<MainVModel> implements OnTabMenuC
 
     @Override
     public void initViews() {
-        DaggerDPComponent.builder()
-                .appComponent(AppContexts.getInstance().getAppComponent())
-                .build()
-                .inject(this);
+//        DaggerDPComponent.builder()
+//                .appComponent(AppContexts.getInstance().getAppComponent())
+//                .build()
+//                .inject(this);
         initTab();
     }
 

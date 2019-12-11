@@ -5,8 +5,8 @@ import android.content.Context;
 import android.support.multidex.MultiDex;
 
 import com.dwz.mvvmdemo.commom.di.component.AppComponent;
-import com.dwz.mvvmdemo.commom.di.component.DaggerAppComponent;
-import com.dwz.mvvmdemo.commom.di.component.DaggerDPComponent;
+//import com.dwz.mvvmdemo.commom.di.component.DaggerAppComponent;
+//import com.dwz.mvvmdemo.commom.di.component.DaggerDPComponent;
 import com.dwz.mvvmdemo.commom.di.module.AppModule;
 import com.dwz.mvvmdemo.commom.di.module.DApiModule;
 
@@ -22,7 +22,7 @@ public class AppContexts extends Application {
     public static int heightPixels,widthPixels;
     private static Context AppContext;
     private static AppContexts instance;
-    private AppComponent appComponent;
+//    private AppComponent appComponent;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -49,15 +49,15 @@ public class AppContexts extends Application {
     }
 
     private void initCompoent() {
-        appComponent = DaggerAppComponent.builder()
-                .dApiModule(new DApiModule())
-                .appModule(new AppModule(this))
-                .build();
+//        appComponent = DaggerAppComponent.builder()
+//                .dApiModule(new DApiModule())
+//                .appModule(new AppModule(this))
+//                .build();
     }
 
-    public AppComponent getAppComponent() {
-        return appComponent;
-    }
+//    public AppComponent getAppComponent() {
+//        return appComponent;
+//    }
 
     public static AppContexts getInstance(){
         return instance;
