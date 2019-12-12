@@ -1,4 +1,4 @@
-package library.weiget;
+package library.widget;
 
 import android.annotation.TargetApi;
 import android.app.Activity;

@@ -1,4 +1,4 @@
-package library.weiget;
+package library.widget;
 
 /**
  * @author dongweizhou
