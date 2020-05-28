@@ -62,4 +62,11 @@
         <attr name="differentSize" format="boolean" /><!--是否支持大小不等星星样式-->
     </declare-styleable>
 
+    <!--弧形的界面属性-->
+    <declare-styleable name="ArcView">
+        <attr name="arcHeight" format="dimension"/>
+        <attr name="lgColor"   format="color"/>
+        <attr name="bgFillColor" format="color"/>
+    </declare-styleable>
+
 </resources>
