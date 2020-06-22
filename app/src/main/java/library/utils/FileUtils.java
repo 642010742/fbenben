@@ -1,31 +1,23 @@
 package library.utils;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ProviderInfo;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.location.LocationManager;
-import android.media.AudioAttributes;
-import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
 import android.util.Log;
-import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.SimpleTarget;
 
-import org.json.JSONObject;
-
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -38,7 +30,6 @@ import java.io.LineNumberReader;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.Writer;
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.DecimalFormat;
@@ -48,6 +39,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import library.App.AppConstants;
 import library.App.AppContexts;
 
 /**
@@ -55,19 +47,20 @@ import library.App.AppContexts;
  */
 public class FileUtils {
     public static long UserId = 1L;
-    public static final String ROOT_PATH = AppContexts.App().getFilesDir() + File.separator ;
-    public static final String PICTURE_PATH = AppContexts.App().getFilesDir().getPath()+"/safe-vault/"+UserId+"/picture";
-    public static final String VOICE_PATH = AppContexts.App().getFilesDir().getPath()+"/safe-vault/"+UserId+"/voice";
+    public static final String ROOT_PATH = AppContexts.App().getFilesDir() + File.separator;
+    public static final String PICTURE_PATH = AppContexts.App().getFilesDir().getPath() + "/safe-vault/" + UserId + "/picture";
+    public static final String VOICE_PATH = AppContexts.App().getFilesDir().getPath() + "/safe-vault/" + UserId + "/voice";
     public static final String PATH = AppContexts.App().getFilesDir().getPath();
 
 
     /**
      * 根据文件路径获取文件名称
+     *
      * @param filePath
      * @return
      */
     public static String getFileName(String filePath) {
-        if(TextUtils.isEmpty(filePath)) {
+        if (TextUtils.isEmpty(filePath)) {
             return "";
         }
         return filePath.substring(filePath.lastIndexOf(File.separator) + 1);
@@ -75,51 +68,53 @@ public class FileUtils {
 
     /**
      * 根据文件路径根目录
+     *
      * @param filePath
      * @return
      */
     public static String getBaseFileName(String filePath) {
-        if(TextUtils.isEmpty(filePath)) {
+        if (TextUtils.isEmpty(filePath)) {
             return "";
         }
-        return filePath.substring(0,filePath.lastIndexOf(File.separator));
+        return filePath.substring(0, filePath.lastIndexOf(File.separator));
     }
 
 
     public static String getClassPageName(String classPageName) {
-        if(TextUtils.isEmpty(classPageName)) {
+        if (TextUtils.isEmpty(classPageName)) {
             return "";
         }
-        return classPageName.substring(0,classPageName.lastIndexOf("."));
+        return classPageName.substring(0, classPageName.lastIndexOf("."));
     }
 
     /**
      * 生成本地文件路径
+     *
      * @param filePath
      * @return
      */
     public static File gerateLocalFile(String filePath) {
         String fileNmae = getFileName(filePath);
         File dirFile = new File(ROOT_PATH);
-        if(!dirFile.exists()) {
+        if (!dirFile.exists()) {
             dirFile.mkdirs();
         }
         return new File(dirFile, fileNmae);
     }
 
-    public static String getImageFileName(){
+    public static String getImageFileName() {
         String timeStamp = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date());
         String imageFileName = "IMG_" + timeStamp + ".jpg";
         return imageFileName;
     }
 
-    public static String getImageGifFileName(){
+    public static String getImageGifFileName() {
         //String timeStamp = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date());
         String imageFileName = "IMG_kaopu_vault_friend_verify.gif";
         return imageFileName;
     }
 
-    public static String getRecordFileName(){
+    public static String getRecordFileName() {
         String timeStamp = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date());
         String imageFileName = "Video_" + timeStamp + ".mp3";
         return imageFileName;
@@ -127,17 +122,17 @@ public class FileUtils {
 
     public static String getFileType(String fileName) {
         String[] strArray = fileName.split("\\.");
-        int suffixIndex = strArray.length -1;
+        int suffixIndex = strArray.length - 1;
         return strArray[suffixIndex];
     }
 
 
     public static File getLocalFile(String fileName) {
         File dirFile = new File(ROOT_PATH);
-        if(!dirFile.exists()) {
+        if (!dirFile.exists()) {
             dirFile.mkdirs();
         }
-        return new File(dirFile,fileName);
+        return new File(dirFile, fileName);
     }
 
     /**
@@ -147,7 +142,7 @@ public class FileUtils {
      * @return
      */
     public static String FormetFileSize(long fileSize) {
-        if(fileSize <= 0) {
+        if (fileSize <= 0) {
             return "0KB";
         }
 
@@ -225,13 +220,13 @@ public class FileUtils {
 //    }
 
 
-    public static void svaeVideoFile(final String path, final String saveFilePath){
+    public static void svaeVideoFile(final String path, final String saveFilePath) {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                 //  if(!FileUtils.getFileType(path).equals("mp3")){
-                       //changeToMp3(path,saveFilePath);
-                       //File file1 = new File(path);
+                //  if(!FileUtils.getFileType(path).equals("mp3")){
+                //changeToMp3(path,saveFilePath);
+                //File file1 = new File(path);
 //                       if (file1.isFile()) {
 //                           if (file1.exists()) {
 //                               if (file1.length()>0) {
@@ -243,46 +238,46 @@ public class FileUtils {
 //                               }
 //                           }
 //                       }
-                  // }else {
-                 try {
-                     FileInputStream fileInputStream = new FileInputStream(path);
+                // }else {
+                try {
+                    FileInputStream fileInputStream = new FileInputStream(path);
                     File file = new File(saveFilePath);
-                    if(!file.exists()) file.createNewFile();
+                    if (!file.exists()) file.createNewFile();
                     FileOutputStream fileOutputStream = new FileOutputStream(file);
                     byte[] temp = new byte[1024];
 
                     int len = 0;
                     //读取文件内容:
                     while ((len = fileInputStream.read(temp)) > 0) {
-                        fileOutputStream.write(temp,0,temp.length);
+                        fileOutputStream.write(temp, 0, temp.length);
                     }
                     fileInputStream.close();
                     fileOutputStream.close();
-                     File file1 = new File(path);
-                          if (file1.isFile()) {
-                              if (file1.exists()) {
-                                  if (file1.length()>0) {
-                                      try{
-                                          file1.delete();
-                                      }catch (Exception e){
+                    File file1 = new File(path);
+                    if (file1.isFile()) {
+                        if (file1.exists()) {
+                            if (file1.length() > 0) {
+                                try {
+                                    file1.delete();
+                                } catch (Exception e) {
 
-                                      }
-                                  }
-                              }
-                          }
-                   } catch (FileNotFoundException e) {
+                                }
+                            }
+                        }
+                    }
+                } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
 
-                 //  }
+                //  }
             }
         }).start();
     }
 
 
-    public static void MP3(String path1,String path2){
+    public static void MP3(String path1, String path2) {
         String command = "sudo ffmpeg -i " + path1
                 + " -f mp3 " + path2;
         runCmd(command);
@@ -310,12 +305,11 @@ public class FileUtils {
     }
 
 
-
-    public static void changeToMp3(String url,String  audiopath, String target ) {
+    public static void changeToMp3(String url, String audiopath, String target) {
         try {
 
             //windows下面的是ffmpeg.exe   linux如下
-            Process process = Runtime.getRuntime().exec(url + File.separator + "ffmpeg -i "+ audiopath + " " + target);
+            Process process = Runtime.getRuntime().exec(url + File.separator + "ffmpeg -i " + audiopath + " " + target);
             InputStreamReader ir = new InputStreamReader(process.getInputStream());
             LineNumberReader input = new LineNumberReader(ir);
             String line;
@@ -332,15 +326,15 @@ public class FileUtils {
     }
 
 
-    public static void saveImageToGallery( Bitmap bmp,String imagePath,File file) {
+    public static void saveImageToGallery(Bitmap bmp, String imagePath, File file) {
         // 首先保存图片
-       // String mediaFileUri = DialogUtils.getInstance().getMediaFileUri()+FileUtils.getImageFileName();
+        // String mediaFileUri = DialogUtils.getInstance().getMediaFileUri()+FileUtils.getImageFileName();
 
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(imagePath);
             boolean compress = bmp.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-            Log.e("saveImageToGallery","------------------是否成功"+compress);
+            Log.e("saveImageToGallery", "------------------是否成功" + compress);
             fos.flush();
 //            if (file.exists()) {
 //                file.delete();
@@ -426,11 +420,12 @@ public class FileUtils {
 
 
     private Map<String, String> infos = new HashMap<String, String>();
+
     /**
      * 保存错误信息到文件中
      *
      * @param ex
-     * @return  返回文件名称,便于将文件传送到服务器
+     * @return 返回文件名称, 便于将文件传送到服务器
      */
     public String saveCrashInfo2File(Throwable ex) {
 
@@ -481,8 +476,6 @@ public class FileUtils {
     private static final String fenbiImage = "fenbi_image";
 
 
-
-
     /**
      * 随机获取图片名称
      */
@@ -496,6 +489,58 @@ public class FileUtils {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+        return childFile.getAbsolutePath();
+    }
+
+    /**
+     * 随机获取图片名称
+     */
+// Glide.with(mContext).asBitmap().load(objects.get(0).getPicUrl()).into(new SimpleTarget<Bitmap>() {
+//        @Override
+//        public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+//            FileOutputStream fileOutputStream = null;
+//            try {
+//                fileOutputStream = new FileOutputStream(FileUtils.randomAppImageName(AppConstants.startImage));
+//                resource.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
+//            } catch (FileNotFoundException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    });
+    public static String randomAppImageName(String name) {
+
+        File childFile = new File(saveFileBase(), name);
+        if (childFile.exists()) {
+            try {
+                childFile.delete();
+                childFile.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                childFile.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return childFile.getAbsolutePath();
+    }
+
+    /**
+     * 随机获取图片名称
+     *FileUtils.getAppImageName(AppConstants.startImage)
+     * @param name
+     * @return
+     */
+    public static String getAppImageName(String name) {
+
+        File childFile = new File(saveFileBase(), name);
+        try {
+            childFile.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return childFile.getAbsolutePath();
     }
@@ -522,7 +567,6 @@ public class FileUtils {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm");
         return simpleDateFormat.format(time);
     }
-
 
 
     /**
