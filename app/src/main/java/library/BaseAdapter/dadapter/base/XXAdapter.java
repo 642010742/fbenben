@@ -8,12 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import library.BaseAdapter.dadapter.helper.ItemViewDelegate;
 import library.BaseAdapter.dadapter.helper.ItemViewDelegateManager;
 import library.BaseAdapter.dadapter.holder.XXViewHolder;
-
-import java.util.List;
-
 import library.commonModel.BaseModel;
 import library.listener.OnItemClickListener;
 import library.utils.LogUtils;
@@ -52,6 +51,7 @@ public  class XXAdapter<T extends BaseModel> extends RecyclerView.Adapter<XXView
         this.types = types;
     }
 
+
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
@@ -63,7 +63,7 @@ public  class XXAdapter<T extends BaseModel> extends RecyclerView.Adapter<XXView
         itemViewDelegateManager = new ItemViewDelegateManager();
     }
 
-    public XXAdapter(List<T> list, Context context,int[]ids,String[] types) {
+    public XXAdapter(List<T> list, Context context, int[]ids, String[] types) {
         this.list = list;
         this.context = context;
         this.ids = ids;
@@ -82,6 +82,11 @@ public  class XXAdapter<T extends BaseModel> extends RecyclerView.Adapter<XXView
 
     @Override
     public void onBindViewHolder(final XXViewHolder holder, final int position) {
+
+        if(changeStyle != null){
+            changeStyle.setRes(holder,list.get(position),position);
+        }
+
         itemViewDelegateManager.convert(holder,list.get(position),position);
         if(ids !=null && ids.length>0 && types != null && types.length>0){
             if(ids.length ==types.length){
@@ -90,6 +95,7 @@ public  class XXAdapter<T extends BaseModel> extends RecyclerView.Adapter<XXView
                     holder.getView(ids[i]).setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            LogUtils.loge(TAG,"=========idssssssssssssssssss");
                             onItemClickListener.onChildItemClick(holder,position,type);
                         }
                     });
@@ -98,6 +104,7 @@ public  class XXAdapter<T extends BaseModel> extends RecyclerView.Adapter<XXView
                 LogUtils.loge(TAG,"=========ids的数量必须和types的数量保持一致=======");
             }
         }
+
         holder.getRootView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,6 +136,12 @@ public  class XXAdapter<T extends BaseModel> extends RecyclerView.Adapter<XXView
 
     public int getCount(){
         return list.size();
+    }
+
+    public changeStyle<T> changeStyle;
+
+    public void setChangeStyle(XXAdapter.changeStyle<T> changeStyle) {
+        this.changeStyle = changeStyle;
     }
 
     @Override
@@ -180,7 +193,7 @@ public  class XXAdapter<T extends BaseModel> extends RecyclerView.Adapter<XXView
         }
     }
 
-    public void upDatasNoClear(List<T> list,int start){
+    public void upDatasNoClear(List<T> list, int start){
         if (list != null && list.size()>0) {
             this.list.addAll(start,list);
             notifyDataSetChanged();
@@ -233,4 +246,8 @@ public  class XXAdapter<T extends BaseModel> extends RecyclerView.Adapter<XXView
         return xxViewHolder;
     }
 
+
+    public interface changeStyle<T extends BaseModel>{
+        void setRes(XXViewHolder viewHolder, T t, int position);
+    }
 }
