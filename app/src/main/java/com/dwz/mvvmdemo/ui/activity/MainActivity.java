@@ -15,9 +15,9 @@ import library.App.AppManager;
 import library.baseView.BaseActivity;
 import library.common.FragmentTabMenuView;
 import library.listener.OnTabMenuClickListener;
+import library.utils.NetworkUtils;
 import library.utils.StatusBarUtil;
 import library.utils.ToastUtil;
-import library.utils.nettools.NetworkUtils;
 
 
 public class MainActivity extends BaseActivity<MainVModel> implements OnTabMenuClickListener {

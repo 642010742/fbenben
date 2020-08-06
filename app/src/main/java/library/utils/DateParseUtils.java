@@ -20,19 +20,19 @@ public class DateParseUtils {
         return sf.format(d);
     }
 
-    public static String getDateToString12(long time) {
+    public static String getDateToString1(long time) {
         Date d = new Date(time);
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         return sf.format(d);
     }
 
-    public static String getDateToString5(long time) {
+    public static String getDateToString2(long time) {
         Date d = new Date(time);
         SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         return sf.format(d);
     }
 
-    public static String getDateToString15(long time) {
+    public static String getDateToString3(long time) {
         Date d = new Date(time);
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return sf.format(d);
@@ -44,46 +44,46 @@ public class DateParseUtils {
         return sf.format(d);
     }
 
-    public static String getDateToString2(long time) {
+    public static String getDateToString5(long time) {
         Date d = new Date(time);
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
         return sf.format(d);
     }
 
-    public static String getDateToString9(long time) {
+    public static String getDateToString6(long time) {
         Date d = new Date(time);
         SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd");
         return sf.format(d);
     }
 
-    public static String getDateToString10(long time) {
+    public static String getDateToString7(long time) {
         Date d = new Date(time);
         SimpleDateFormat sf = new SimpleDateFormat("yyyy年MM月dd日");
         return sf.format(d);
     }
 
-    public static String getDateToString16(long time) {
+    public static String getDateToString8(long time) {
         Date d = new Date(time);
         SimpleDateFormat sf = new SimpleDateFormat("yyyy年MM月");
         return sf.format(d);
     }
 
-    public static String getDateToString3(long time) {
+    public static String getDateToString9(long time) {
         DateFormat formatter = new SimpleDateFormat("mm:ss");
         return formatter.format(new Date(time));
     }
 
-    public static String getDateToString6(long time) {
+    public static String getDateToString10(long time) {
         DateFormat formatter = new SimpleDateFormat("MM-dd HH:mm:ss");
         return formatter.format(new Date(time));
     }
 
-    public static String getDateToString7(long time) {
+    public static String getDateToString11(long time) {
         DateFormat formatter = new SimpleDateFormat("HH:mm");
         return formatter.format(new Date(time));
     }
 
-    public static String getDateToString8(long time) {
+    public static String getDateToString12(long time) {
         DateFormat formatter = new SimpleDateFormat("MM月dd日");
         return formatter.format(new Date(time));
     }
@@ -98,13 +98,13 @@ public class DateParseUtils {
         return formatter.format(new Date(time));
     }
 
-    public static String getDateToString11(long time) {
+    public static String getDateToString15(long time) {
         Date d = new Date(time);
         SimpleDateFormat sf = new SimpleDateFormat("yyyy.MM.dd");
         return sf.format(d);
     }
 
-    public static String getDayToString(long time) {
+    public static String getDayToString16(long time) {
         Date d = new Date(time);
         SimpleDateFormat sf = new SimpleDateFormat("dd");
         return sf.format(d);
@@ -120,11 +120,22 @@ public class DateParseUtils {
         return sf.format(date);
     }
 
+    /**
+     * 获取时间
+     * @param date
+     * @param pattern
+     * @return
+     */
     public static String getDateToString(Date date, String pattern) {
         SimpleDateFormat sf = new SimpleDateFormat(pattern);
         return sf.format(date);
     }
 
+    /**
+     * 获取英文月份
+     * @param time
+     * @return
+     */
     public static String getEnglishMonth(long time) {
         Date d = new Date(time);
         SimpleDateFormat sf = new SimpleDateFormat("MM");

@@ -1,4 +1,4 @@
-package library.utils;
+package library.utils.permission;
 
 import android.app.Activity;
 import android.content.ComponentName;

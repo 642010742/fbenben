@@ -3,6 +3,9 @@ package library.utils;
 import android.text.TextUtils;
 
 import java.text.NumberFormat;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 public class CheckUtils {
 
@@ -17,6 +20,37 @@ public class CheckUtils {
             return false;
         }
         return true;
+    }
+
+    /**
+     * 手机号正则校验
+     *
+     * @param str
+     * @return
+     * @throws PatternSyntaxException
+     */
+    public static boolean isChinaPhoneLegal(String str) throws PatternSyntaxException {
+        String regExp = "^((13[0-9])|(15[^4])|(166)|(17[0-8])|(18[0-9])|(19[8-9])|(147,145))\\d{8}$";
+        Pattern p = Pattern.compile(regExp);
+        Matcher m = p.matcher(str);
+        return m.matches();
+    }
+
+    /**
+     * 从一串字符中提取手机号
+     *
+     * @param text
+     * @return
+     */
+    public static String getPhoneNumbers(String text) {
+        String regex = "1[345789]\\d{9}";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(text);
+        while (m.find()) {//看是否能在字符串中找到符合正则表达式的字符串，找到返回true，同时指针指向下一个子序列
+            String phone = m.group();            //必须先找再获取
+            return phone;
+        }
+        return "";
     }
 
     /**
@@ -47,8 +81,50 @@ public class CheckUtils {
     }
 
     /**
-     * 新建记账本金额校验
+     * 是否是连续数字
      *
+     * @param pwd
+     */
+    public static boolean isContinuPwd(String pwd) {
+
+        int lastValue;
+        int differ = Integer.valueOf(pwd.charAt(1)) - Integer.valueOf(pwd.charAt(0));
+
+        for (int i = 0; i < pwd.length() - 1; i++) {
+
+            lastValue = Integer.valueOf(pwd.charAt(i));
+            Integer integer = Integer.valueOf(pwd.charAt(i + 1));
+
+            if ((lastValue + differ != integer)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+
+    /**
+     * 是否是重复数字
+     *
+     * @param pwd
+     */
+    public static boolean isRepeatPwd(String pwd) {
+
+        int lastValue;
+        for (int i = 0; i < pwd.length() - 1; i++) {
+            lastValue = Integer.valueOf(pwd.charAt(i));
+            Integer integer = Integer.valueOf(pwd.charAt(i + 1));
+            if (lastValue != integer) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 新建记账本金额校验
+     *值为0-999999范围内
      * @param price
      * @return
      */
@@ -73,7 +149,7 @@ public class CheckUtils {
     }
 
     /**
-     * 两个int值相除并保留两位小数
+     * 两个int值相除并保留两位小数 有%
      *
      * @param a
      * @param b
@@ -92,48 +168,13 @@ public class CheckUtils {
         }
     }
 
-
     /**
-     * 两个int值相除并保留两位小数
-     *
+     * 两个int值相除并保留两位小数 无%
      * @param a
      * @param b
      * @return
      */
-    public static String toPercent100(int a, int b) {
-        if (b == 0) {
-            return "0%";
-        }
-        double num = (double) a / b;
-        NumberFormat percentInstance = NumberFormat.getPercentInstance();
-        if (b <= 0) {
-            return "0%";
-        } else {
-            return percentInstance.format(num);
-        }
-    }
-
-    public static String toPercent(double a, double b) {
-        if (b == 0) {
-            return "0%";
-        }
-        double num = (double) a / b;
-        NumberFormat percentInstance = NumberFormat.getPercentInstance();
-        if (b <= 0) {
-            return "0%";
-        } else {
-            return percentInstance.format(num);
-        }
-    }
-
-    /**
-     * 两个int值相除并保留两位小数
-     *
-     * @param a
-     * @param b
-     * @return
-     */
-    public static int toPercentNoSymBol(int a, int b) {
+    public static int toPercentNoPercent(int a, int b) {
         if (b == 0) {
             return 0;
         }
@@ -146,6 +187,45 @@ public class CheckUtils {
         }
     }
 
+    /**
+     * 两个double值相除并保留两位小数
+     * @param a
+     * @param b
+     * @return
+     */
+    public static String toPercent(double a, double b) {
+        if (b == 0) {
+            return "0%";
+        }
+        double num =  a / b;
+        NumberFormat percentInstance = NumberFormat.getPercentInstance();
+        if (b <= 0) {
+            return "0%";
+        } else {
+            return percentInstance.format(num);
+        }
+    }
+
+    /**
+     * 两个double值相除并保留两位小数 无%
+     * @param a
+     * @param b
+     * @return
+     */
+    public static int toPercentNoPercent(double a, double b) {
+        if (b == 0) {
+            return 0;
+        }
+        double num = (double) a / b;
+        NumberFormat percentInstance = NumberFormat.getPercentInstance();
+        if (b <= 0) {
+            return 0;
+        } else {
+            return getPercent(percentInstance.format(num));
+        }
+    }
+
+
     public static int getPercent(String value) {
         if (!TextUtils.isEmpty(value)) {
             return Integer.valueOf(value.substring(0, value.length() - 1));
@@ -154,28 +234,4 @@ public class CheckUtils {
         }
     }
 
-
-    /**
-     * 两个int值相除并保留两位小数
-     *
-     * @param a
-     * @param b
-     * @return
-     */
-    public static int percent(int a, int b) {
-        if (b == 0) {
-            return 0;
-        }
-        double num = (double) (a * 1.0) / b;
-        NumberFormat percentInstance = NumberFormat.getPercentInstance();
-        if (num <= 0) {
-            return 0;
-        } else {
-            String format = percentInstance.format(num);
-            String substring;
-            String[] split = format.split("%");
-            substring = split[0];
-            return Integer.valueOf(substring);
-        }
-    }
 }

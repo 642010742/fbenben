@@ -1,10 +1,13 @@
 package library.utils;
 
+import android.app.Activity;
 import android.app.AppOpsManager;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.os.Build;
+import android.provider.Settings;
 import android.support.annotation.RequiresApi;
 
 import java.lang.reflect.Field;
@@ -20,6 +23,7 @@ public class NotifyUtils {
 
     /**
      * 查看是否允许通知栏显示消息
+     *
      * @param context
      * @return
      */
@@ -57,4 +61,16 @@ public class NotifyUtils {
         }
         return false;
     }
+
+
+    /**
+     * 跳转至系统设置页面
+     *
+     * @param activity
+     */
+    public void toSetActivity(Activity activity) {
+        Intent intent = new Intent(Settings.ACTION_SETTINGS);
+        activity.startActivity(intent);
+    }
+
 }

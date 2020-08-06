@@ -1,13 +1,16 @@
 package library.utils;
 
 import android.app.Activity;
+import android.content.Context;
 import android.database.ContentObserver;
+import android.os.Handler;
 import android.provider.Settings;
 import android.view.Window;
 import android.view.WindowManager;
 
 import library.App.AppConstants;
 import library.App.AppContexts;
+import library.baseView.BaseActivity;
 
 /**
  * @author Administrator
@@ -19,6 +22,7 @@ public class BackGroundUtils {
 
     /**
      * 修改背景透明度
+     *
      * @param activity
      * @param bgAlpha
      */
@@ -30,7 +34,6 @@ public class BackGroundUtils {
 
     /**
      * 获取系统亮度
-     *
      * @return
      */
     public static int getSystemBrightness() {
@@ -45,7 +48,7 @@ public class BackGroundUtils {
 
     /**
      * 设置系统亮度
-     *设置页面亮度
+     * 设置页面亮度
      * @param activity
      */
     public static void changeAppBrightness(Activity activity, int brightness) {
@@ -59,22 +62,38 @@ public class BackGroundUtils {
         window.setAttributes(lp);
     }
 
-//    2.屏幕亮度监测  该方法有用,只是暂时卸载这里
-//
-//    在BaseActivity里面onResume(),里面注册监听
-//    getContentResolver().registerContentObserver(
-//            Settings.System.getUriFor(Settings.System.SCREEN_BRIGHTNESS), true,
-//    mBrightnessObserver);
-//
-//    在onDestory里面取消监听
-//    getContentResolver().unregisterContentObserver(
-//            mBrightnessObserver);
-//
-//    private ContentObserver mBrightnessObserver = new ContentObserver(new Handler()) {
-//        @Override
-//        public void onChange(boolean selfChange) {
-//            int systemBrightness = BackGroundUtils.getSystemBrightness();
-//            BackGroundUtils.changeAppBrightness(BaseActivity.this, AppConstants.nightMode ? systemBrightness / 2 : systemBrightness);
-//        }
-//    };
+    /**
+     * 屏幕亮度监测
+     * 在BaseActivity里面onResume(),里面注册监听
+     *
+     * @param activity 一般传当前页面activity 若无效果可试BaseActiivty
+     */
+    private Activity mActivity;
+
+    public void registerBrightnessListener(Activity activity) {
+        mActivity = activity;
+        activity.getContentResolver().registerContentObserver(
+                Settings.System.getUriFor(Settings.System.SCREEN_BRIGHTNESS), true,
+                mBrightnessObserver);
+    }
+
+    /**
+     * 在onDestory里面取消监听
+     *
+     * @param context
+     */
+    public void cancleBrightnessListener(Context context) {
+        context.getContentResolver().unregisterContentObserver(
+                mBrightnessObserver);
+    }
+
+    private ContentObserver mBrightnessObserver = new ContentObserver(new Handler()) {
+        @Override
+        public void onChange(boolean selfChange) {
+            int systemBrightness = BackGroundUtils.getSystemBrightness();
+            //这个值一般是全局变量,根据具体需求改动
+            boolean nightMode = false;
+            changeAppBrightness(mActivity, nightMode ? systemBrightness / 2 : systemBrightness);
+        }
+    };
 }

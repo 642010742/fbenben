@@ -7,6 +7,12 @@ import java.security.MessageDigest;
 
 public class MD5 {
 	public static String sv = "Ix4c$S732nqix*cH";
+
+	/**
+	 * 加密
+	 * @param s
+	 * @return
+	 */
 	public final static String MD5(String s) {
 		char hexDigits[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
 		try {
@@ -33,6 +39,11 @@ public class MD5 {
 		}
 	}
 
+	/**
+	 * 解密
+	 * @param str
+	 * @return
+	 */
 	public static String Md5_(String str){
 		String str2 = MD5(str);
 		if(str2.length() > 0) {

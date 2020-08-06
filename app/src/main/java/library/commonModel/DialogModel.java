@@ -2,7 +2,6 @@ package library.commonModel;
 
 import java.util.List;
 
-import library.utils.DialogModelFactory;
 
 
 public class DialogModel extends BaseModel{
@@ -15,12 +14,8 @@ public class DialogModel extends BaseModel{
     private String dialogCancel;
     private int[]  colors;
 
-
-
-
     public DialogModel() {
     }
-
 
     public DialogModel(List<String> list){
 
@@ -47,7 +42,6 @@ public class DialogModel extends BaseModel{
     public void setDialogContent(String dialogContent) {
         this.dialogContent = dialogContent;
     }
-
 
     public String getDialogSure() {
         return dialogSure;
