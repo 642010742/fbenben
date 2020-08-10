@@ -20,6 +20,18 @@ import java.util.List;
  * Class desc:
  *
  * 6.0 运行时权限处理工具类。
+ * MPermissionUtils.requestPermissionsResult(MainActivity.this, 1, new String[]{
+ *                         android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+ *                         android.Manifest.permission.READ_EXTERNAL_STORAGE}, new MPermissionUtils.OnPermissionListener() {
+ *                     @Override
+ *                     public void onPermissionGranted() {
+ *                         downFile();
+ *                     }
+ *
+ *                     @Override
+ *                     public void onPermissionDenied() {
+ *                     }
+ *                 });
  */
 public class MPermissionUtils {
 

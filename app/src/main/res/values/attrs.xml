@@ -69,4 +69,13 @@
         <attr name="bgFillColor" format="color"/>
     </declare-styleable>
 
+    <!--    自定义圆角图片-->
+    <declare-styleable name="RoundCornerImageView">
+        <attr name="radius" format="dimension" />
+        <attr name="left_top_radius" format="dimension" />
+        <attr name="right_top_radius" format="dimension" />
+        <attr name="right_bottom_radius" format="dimension" />
+        <attr name="left_bottom_radius" format="dimension" />
+    </declare-styleable>
+
 </resources>
