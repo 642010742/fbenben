@@ -16,6 +16,8 @@ public class AppConstants {
     public class IntentKey {
         //0-分类搜索 1-首页搜索
         public static final String from = "from";
+        public static final String WEB_URL = "WEB_URL";
+        public static final String WEB_TITLE = "WEB_TITLE";
     }
 
     public class EventKey {
