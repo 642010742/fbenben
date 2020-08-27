@@ -35,6 +35,7 @@ public class CommWebview extends AppCompatActivity {
         if ((url.startsWith("http"))) {
             comWeb.loadUrl(url);
         } else {
+            //解决6.0乱码问题
             comWeb.loadDataWithBaseURL(null, getHtmlData(url), "text/html", "utf-8", null);
         }
 
