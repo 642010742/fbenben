@@ -1,28 +1,13 @@
 package library.utils;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.databinding.DataBindingUtil;
+
+import androidx.databinding.DataBindingUtil;
 import android.graphics.drawable.ColorDrawable;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.PopupWindow;
-import android.widget.Toast;
-
-
-
-import java.util.List;
-
-import library.BaseAdapter.dadapter.base.XXAdapter;
-import library.BaseAdapter.dadapter.holder.XXViewHolder;
-import library.commonModel.BaseModel;
-import library.listener.BtnDoneListener;
-import library.listener.OnItemClickListener;
 
 /**
  * Created by Administrator on 2018/3/6.

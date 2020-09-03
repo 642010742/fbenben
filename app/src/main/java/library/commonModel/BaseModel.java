@@ -1,6 +1,6 @@
 package library.commonModel;
 
-import android.databinding.BaseObservable;
+import androidx.databinding.BaseObservable;
 
 import java.io.Serializable;
 

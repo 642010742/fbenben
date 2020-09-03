@@ -2,15 +2,12 @@ package library.App;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.multidex.MultiDex;
-
-import com.dwz.mvvmdemo.commom.di.component.AppComponent;
-//import com.dwz.mvvmdemo.commom.di.component.DaggerAppComponent;
-//import com.dwz.mvvmdemo.commom.di.component.DaggerDPComponent;
-import com.dwz.mvvmdemo.commom.di.module.AppModule;
-import com.dwz.mvvmdemo.commom.di.module.DApiModule;
+import androidx.multidex.MultiDex;
 
 import library.utils.CrashHandler;
+
+//import com.dwz.mvvmdemo.commom.di.component.DaggerAppComponent;
+//import com.dwz.mvvmdemo.commom.di.component.DaggerDPComponent;
 
 /**
  * 管理app生命周期

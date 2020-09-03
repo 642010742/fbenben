@@ -1,7 +1,7 @@
 package library.core;
 
-import android.databinding.BindingAdapter;
-import android.support.annotation.ColorRes;
+import androidx.databinding.BindingAdapter;
+import androidx.annotation.ColorRes;
 import android.view.View;
 
 import com.dwz.mvvmdemo.R;

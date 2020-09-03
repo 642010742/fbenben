@@ -2,10 +2,10 @@ package library.utils.refreshLayout.listener;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.v4.view.MotionEventCompat;
-import android.support.v4.view.NestedScrollingChild;
-import android.support.v4.view.NestedScrollingChildHelper;
-import android.support.v4.view.ViewCompat;
+import androidx.core.view.MotionEventCompat;
+import androidx.core.view.NestedScrollingChild;
+import androidx.core.view.NestedScrollingChildHelper;
+import androidx.core.view.ViewCompat;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -32,7 +32,7 @@ import library.utils.refreshLayout.processor.IDecorator;
 import library.utils.refreshLayout.processor.OverScrollDecorator;
 import library.utils.refreshLayout.processor.RefreshProcessor;
 
-import static android.support.v4.widget.ViewDragHelper.INVALID_POINTER;
+import static androidx.customview.widget.ViewDragHelper.INVALID_POINTER;
 
 /**
  * @author dongweizhou

@@ -1,7 +1,7 @@
 package library.core;
 
-import android.databinding.BindingAdapter;
-import android.support.annotation.Dimension;
+import androidx.databinding.BindingAdapter;
+import androidx.annotation.Dimension;
 import android.widget.TextView;
 
 import library.App.AppContexts;

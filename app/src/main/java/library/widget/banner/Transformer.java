@@ -1,6 +1,6 @@
 package library.widget.banner;
 
-import android.support.v4.view.ViewPager.PageTransformer;
+import androidx.viewpager.widget.ViewPager.PageTransformer;
 
 import library.widget.banner.transformer.AccordionTransformer;
 import library.widget.banner.transformer.BackgroundToForegroundTransformer;

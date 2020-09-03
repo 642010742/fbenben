@@ -1,14 +1,11 @@
 package library.commonModel;
 
 import android.graphics.Bitmap;
-import android.support.annotation.ColorRes;
-import android.support.annotation.Dimension;
-import android.support.annotation.IdRes;
-import android.view.View;
+import androidx.annotation.ColorRes;
+import androidx.annotation.Dimension;
+import androidx.annotation.IdRes;
 
 import java.util.List;
-
-import library.commonModel.BaseModel;
 
 /**
  * @author dongweizhou

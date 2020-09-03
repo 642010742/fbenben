@@ -3,7 +3,7 @@ package library.utils.refreshLayout.processor;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.animation.DecelerateInterpolator;
 
 import java.util.LinkedList;

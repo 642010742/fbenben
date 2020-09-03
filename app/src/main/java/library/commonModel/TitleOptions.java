@@ -3,9 +3,9 @@ package library.commonModel;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.databinding.Bindable;
-import android.support.annotation.ColorRes;
-import android.support.annotation.Dimension;
+import androidx.databinding.Bindable;
+import androidx.annotation.ColorRes;
+import androidx.annotation.Dimension;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 

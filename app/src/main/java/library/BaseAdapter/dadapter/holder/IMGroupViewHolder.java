@@ -1,8 +1,8 @@
 package library.BaseAdapter.dadapter.holder;
 
 import android.content.Context;
-import android.databinding.ViewDataBinding;
-import android.support.v7.widget.RecyclerView;
+import androidx.databinding.ViewDataBinding;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.View;
 

@@ -2,7 +2,7 @@ package library.utils.scrollview;
 
 import android.content.Context;
 import android.graphics.Point;
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
 import android.util.AttributeSet;
 import android.view.WindowManager;
 

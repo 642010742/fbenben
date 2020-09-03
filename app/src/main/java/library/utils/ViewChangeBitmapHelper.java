@@ -4,9 +4,9 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Typeface;
-import android.support.annotation.ColorRes;
-import android.support.annotation.IdRes;
+
+import androidx.annotation.ColorRes;
+import androidx.annotation.IdRes;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;

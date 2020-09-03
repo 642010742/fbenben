@@ -1,8 +1,8 @@
 package library.baseVModel;
 
 import android.app.Activity;
-import android.databinding.BaseObservable;
-import android.databinding.ViewDataBinding;
+import androidx.databinding.BaseObservable;
+import androidx.databinding.ViewDataBinding;
 
 import library.interfaces.IPresenter;
 
