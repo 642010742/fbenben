@@ -71,7 +71,7 @@ public class TestFragment extends BaseFragment<TestFragmentVmodel> implements Vi
                 //QMUIDialogAction.ACTION_PROP_POSITIVE  蓝色
                 //QMUIDialogAction.ACTION_PROP_NEGATIVE  红色
                 //QMUIDialogAction.ACTION_PROP_NEUTRAL  蓝色
-                .addAction(0, "确定", QMUIDialogAction.ACTION_PROP_NEUTRAL, new QMUIDialogAction.ActionListener() {
+                .addAction(0, "确定", QMUIDialogAction.ACTION_PROP_NEGATIVE, new QMUIDialogAction.ActionListener() {
                     @Override
                     public void onClick(QMUIDialog dialog, int index) {
                         dialog.dismiss();
@@ -100,6 +100,16 @@ public class TestFragment extends BaseFragment<TestFragmentVmodel> implements Vi
                     @Override
                     public void onClick(QMUIDialog dialog, int index) {
                         dialog.dismiss();
+                    }
+                })
+                //QMUIDialogAction.ACTION_PROP_POSITIVE  蓝色
+                //QMUIDialogAction.ACTION_PROP_NEGATIVE  红色
+                //QMUIDialogAction.ACTION_PROP_NEUTRAL  蓝色
+                .addAction(0, "确定", QMUIDialogAction.ACTION_PROP_NEUTRAL, new QMUIDialogAction.ActionListener() {
+                    @Override
+                    public void onClick(QMUIDialog dialog, int index) {
+                        dialog.dismiss();
+                        Toast.makeText(getActivity(), "发送成功", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .create(mCurrentDialogStyle).show();
