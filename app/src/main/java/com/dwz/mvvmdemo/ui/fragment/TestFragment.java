@@ -10,6 +10,7 @@ import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
 import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction;
 
 import library.baseView.BaseFragment;
+import library.utils.upapk.VersionInfoHelper;
 
 /**
  * @author dongweizhou
@@ -35,6 +36,8 @@ public class TestFragment extends BaseFragment<TestFragmentVmodel> implements Vi
     public void initView() {
         vm.bind.changeAlpha.setChangeAlphaWhenPress(true);
 
+        VersionInfoHelper instance = VersionInfoHelper.getInstance(getActivity());
+        vm.bind.showVersionInfo.setText(instance.getVersionCode()+"        "+instance.getVersionName());
         initListener();
     }
 

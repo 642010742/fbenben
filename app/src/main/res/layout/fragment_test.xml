@@ -14,6 +14,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/showVersionInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
         <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
             android:id="@+id/showDialog1"
             android:layout_width="wrap_content"

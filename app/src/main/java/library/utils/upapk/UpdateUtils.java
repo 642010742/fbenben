@@ -8,14 +8,10 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.Settings;
-import androidx.annotation.RequiresApi;
-import androidx.core.content.FileProvider;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
@@ -26,6 +22,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.RequiresApi;
+import androidx.core.content.FileProvider;
 
 import com.dwz.mvvmdemo.R;
 
@@ -128,7 +127,7 @@ public class UpdateUtils {
 
         try {
             Integer newVersionCode = Integer.valueOf(newVersionCodeStr);
-            int versionCode = getVersionCode();
+            int versionCode = VersionInfoHelper.getInstance(AppManager.getAppManager().currentActivity()).getVersionCode();
 
             if (newVersionCode <= versionCode) {
                 return false;
@@ -153,49 +152,6 @@ public class UpdateUtils {
         } catch (Exception e) {
             e.printStackTrace();
             return "包名未知";
-        }
-    }
-
-    // 获取当前版本的版本号
-    public static String getVersionName() {
-        try {
-            PackageManager packageManager = AppManager.getAppManager()
-                    .currentActivity().getPackageManager();
-            PackageInfo packageInfo = packageManager.getPackageInfo(AppManager
-                    .getAppManager().currentActivity().getPackageName(), 0);
-            return packageInfo.versionName;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "版本号未知";
-        }
-    }
-
-    // 获取当前版本的版本号
-    public static int getVersionCode() {
-        try {
-            PackageManager packageManager = AppManager.getAppManager()
-                    .currentActivity().getPackageManager();
-            PackageInfo packageInfo = packageManager.getPackageInfo(AppManager
-                    .getAppManager().currentActivity().getPackageName(), 0);
-            return packageInfo.versionCode;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return 0;
-        }
-    }
-
-
-    // 获取当前版本的版本号
-    public static String getVersionName1() {
-        try {
-            PackageManager packageManager = AppManager.getAppManager()
-                    .currentActivity().getPackageManager();
-            PackageInfo packageInfo = packageManager.getPackageInfo(AppManager
-                    .getAppManager().currentActivity().getPackageName(), 0);
-            return packageInfo.versionName;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "1.0";
         }
     }
 
