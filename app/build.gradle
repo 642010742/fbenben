@@ -19,6 +19,21 @@ android {
             javaMaxHeapSize "2g" //4g
         }
     }
+
+    signingConfigs {
+        debug {
+            keyAlias 'dsmall'
+            keyPassword 'dsmall2020'
+            storeFile file('../dsmall.jks')
+            storePassword 'dsmall2020'
+        }
+        release {
+            keyAlias 'dsmall'
+            keyPassword 'dsmall2020'
+            storeFile file('../dsmall.jks')
+            storePassword 'dsmall2020'
+        }
+    }
     dataBinding {
         enabled = true
     }
