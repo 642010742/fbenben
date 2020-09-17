@@ -19,7 +19,7 @@ android {
             javaMaxHeapSize "2g" //4g
         }
 
-        buildConfigField "String", "ABOUTTITLE", System.properties['ABOUTTITLE']
+        buildConfigField "String", "ABOUTTITLE", project.ABOUTTITLE
     }
     dataBinding {
         enabled = true
