@@ -21,13 +21,13 @@ android {
     }
 
     signingConfigs {
-        debug {
+        release {
             keyAlias 'dsmall'
             keyPassword 'dsmall2020'
             storeFile file('../dsmall.jks')
             storePassword 'dsmall2020'
         }
-        release {
+        debug {
             keyAlias 'dsmall'
             keyPassword 'dsmall2020'
             storeFile file('../dsmall.jks')
