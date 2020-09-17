@@ -7,8 +7,8 @@ android {
         applicationId "com.dwz.mvvmdemo"
         minSdkVersion 24
         targetSdkVersion 28
-        versionCode Integer.parseInt(System.properties['versionCode'])
-        versionName System.properties['versionName']
+        versionCode project.VERSION_CODE as int
+        versionName project.VERSION_NAME
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
         // 解决超过64k vault
@@ -18,6 +18,8 @@ android {
             preDexLibraries = false
             javaMaxHeapSize "2g" //4g
         }
+
+        buildConfigField "String", "ABOUTTITLE", System.properties['ABOUTTITLE']
     }
     dataBinding {
         enabled = true

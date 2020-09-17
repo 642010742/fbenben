@@ -3,6 +3,7 @@ package com.dwz.mvvmdemo.ui.fragment;
 import android.view.View;
 import android.widget.Toast;
 
+import com.dwz.mvvmdemo.BuildConfig;
 import com.dwz.mvvmdemo.R;
 import com.dwz.mvvmdemo.vm.TestFragmentVmodel;
 import com.qmuiteam.qmui.skin.QMUISkinManager;
@@ -38,6 +39,7 @@ public class TestFragment extends BaseFragment<TestFragmentVmodel> implements Vi
 
         VersionInfoHelper instance = VersionInfoHelper.getInstance(getActivity());
         vm.bind.showVersionInfo.setText(instance.getVersionCode()+"        "+instance.getVersionName());
+        vm.bind.aboutTitle.setText(BuildConfig.ABOUTTITLE);
         initListener();
     }
 
