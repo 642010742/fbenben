@@ -20,6 +20,7 @@ android {
         }
 
         buildConfigField "String", "ABOUTTITLE", ABOUTTITLE
+        buildConfigField "String", "BUILD_TYPE", BUILD_TYPE
     }
     dataBinding {
         enabled = true
