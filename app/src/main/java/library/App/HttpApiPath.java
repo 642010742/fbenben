@@ -1,4 +1,4 @@
-package com.dwz.mvvmdemo;
+package library.App;
 
 /**
  * 接口地址
