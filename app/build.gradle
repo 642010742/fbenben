@@ -19,7 +19,8 @@ android {
             javaMaxHeapSize "2g" //4g
         }
 
-        buildConfigField "String", "ABOUTTITLE", ABOUTTITLE
+        def aboutTitle = System.getenv("ABOUTTITLE")
+        buildConfigField "String", "ABOUTTITLE", aboutTitle ? aboutTitle : ABOUTTITLE
         buildConfigField "String", "API_ENVIRONMENT", project.API_ENVIRONMENT
     }
     dataBinding {
