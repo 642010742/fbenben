@@ -40,6 +40,7 @@ public class TestFragment extends BaseFragment<TestFragmentVmodel> implements Vi
         VersionInfoHelper instance = VersionInfoHelper.getInstance(getActivity());
         vm.bind.showVersionInfo.setText(instance.getVersionCode()+"        "+instance.getVersionName());
         vm.bind.aboutTitle.setText(BuildConfig.ABOUTTITLE);
+        vm.bind.buildType.setText(BuildConfig.BUILD_TYPE);
         initListener();
     }
 
