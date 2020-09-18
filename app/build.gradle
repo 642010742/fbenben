@@ -20,9 +20,11 @@ android {
         }
 
         def aboutTitle = System.getenv("ABOUTTITLE")
-//        buildConfigField "String", "ABOUTTITLE", aboutTitle ? aboutTitle : ABOUTTITLE
-        buildConfigField "String", "ABOUTTITLE", project.ABOUTTITLE
+//        buildConfigField "String", "BUILD_TYPE", project.BUILD_TYPE
         buildConfigField "String", "API_ENVIRONMENT", project.API_ENVIRONMENT
+        buildConfigField "String", "ABOUTTITLE", project.ABOUTTITLE
+//        buildConfigField "String", "ABOUTTITLE", aboutTitle ? aboutTitle : ABOUTTITLE
+
     }
     dataBinding {
         enabled = true
@@ -75,20 +77,26 @@ android {
     }
 
     //APK打包重新命名
-//    android.applicationVariants.all { variant ->
-//
-//        variant.outputs.all {
-//            def chanelName
-//
-//            variant.productFlavors.each { flavor ->
-//                chanelName = flavor.name
-//            }
-//            outputFileName = System.properties['APP_NAME'] + "_${buildType.name}_v${defaultConfig.versionName}" + "_a" + getAgency(System.properties['agencyCode']) + getDate() + ".apk"
-//            if (variant.buildType.name != "debug") {//防止AS无法安装debug包(apk)
-//                variant.getPackageApplication().outputDirectory = new File(project.rootDir.absolutePath + "/app/build/outputs/apk/" + System.properties['APP_NAME'] + "_${buildType.name}/")
-//            }
-//        }
-//    }
+    android.applicationVariants.all {
+        variant ->
+            variant.outputs.all {
+                //dsmall_202009081524_102_test.apk
+                outputFileName = project.APP_NAME + getDate() + "_${defaultConfig.versionCode}_" + getEnvironment(project.API_ENVIRONMENT) + ".apk"
+            }
+
+    }
+}
+
+//获取时间戳
+def getDate() {
+    def date = new Date()
+    def formattedDate = date.format('_yyyyMMddHHmm')
+//    def formattedDate = date.format('_yyyyMMdd_HH_mm')
+    return formattedDate
+}
+
+def getEnvironment(String environmentStr) {
+    return environmentStr.substring(1, environmentStr.length()-1)
 }
 
 
