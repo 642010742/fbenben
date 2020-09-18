@@ -20,7 +20,8 @@ android {
         }
 
         def aboutTitle = System.getenv("ABOUTTITLE")
-        buildConfigField "String", "ABOUTTITLE", aboutTitle ? aboutTitle : ABOUTTITLE
+//        buildConfigField "String", "ABOUTTITLE", aboutTitle ? aboutTitle : ABOUTTITLE
+        buildConfigField "String", "ABOUTTITLE", project.ABOUTTITLE
         buildConfigField "String", "API_ENVIRONMENT", project.API_ENVIRONMENT
     }
     dataBinding {
@@ -72,7 +73,24 @@ android {
             signingConfig signingConfigs.release
         }
     }
+
+    //APK打包重新命名
+//    android.applicationVariants.all { variant ->
+//
+//        variant.outputs.all {
+//            def chanelName
+//
+//            variant.productFlavors.each { flavor ->
+//                chanelName = flavor.name
+//            }
+//            outputFileName = System.properties['APP_NAME'] + "_${buildType.name}_v${defaultConfig.versionName}" + "_a" + getAgency(System.properties['agencyCode']) + getDate() + ".apk"
+//            if (variant.buildType.name != "debug") {//防止AS无法安装debug包(apk)
+//                variant.getPackageApplication().outputDirectory = new File(project.rootDir.absolutePath + "/app/build/outputs/apk/" + System.properties['APP_NAME'] + "_${buildType.name}/")
+//            }
+//        }
+//    }
 }
+
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.0.0'
