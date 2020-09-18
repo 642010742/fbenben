@@ -77,15 +77,14 @@ android {
     }
 
     //APK打包重新命名
-    android.applicationVariants.all {
-        variant ->
-            variant.outputs.all {
-                //dsmall_202009081524_102_test.apk
+//    android.applicationVariants.all {
+//        variant ->
+//            variant.outputs.all {
+//                //dsmall_202009081524_102_test.apk
 //                outputFileName = project.APP_NAME + getDate() + "_${defaultConfig.versionCode}_" + getEnvironment(project.API_ENVIRONMENT) + ".apk"
-                outputFileName = project.APP_NAME + "_${defaultConfig.versionCode}_" + getEnvironment(project.API_ENVIRONMENT) + ".apk"
-            }
-
-    }
+//            }
+//
+//    }
 }
 
 //获取时间戳
