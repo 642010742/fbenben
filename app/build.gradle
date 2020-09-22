@@ -134,11 +134,11 @@ dependencies {
     //图片选择
     implementation 'com.github.YancyYe:GalleryPick:1.2.1'
     implementation 'com.github.hackware1993:MagicIndicator:1.5.0'
-
     implementation 'com.google.dagger:dagger:2.11'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.11'
-
     //    qmui
     implementation 'com.qmuiteam:qmui:2.0.0-alpha10'
     implementation "com.qmuiteam:arch:2.0.0-alpha10"
+    //权限
+    implementation 'com.permissionx.guolindev:permissionx:1.4.0'
 }
