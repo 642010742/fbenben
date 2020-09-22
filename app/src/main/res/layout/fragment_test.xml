@@ -21,15 +21,15 @@
 
         <TextView
             android:id="@+id/aboutTitle"
-            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp" />
 
         <TextView
             android:id="@+id/buildType"
-            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp" />
 
         <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
             android:id="@+id/showDialog1"
@@ -94,5 +94,16 @@
             app:qmui_backgroundColor="@color/c909090"
             app:qmui_borderColor="@color/c333333"
             app:qmui_isRadiusAdjustBounds="true" />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dim20"
+            android:backgroundTint="@color/ff463c"
+            android:insetTop="@dimen/dim0"
+            android:insetBottom="@dimen/dim0"
+            android:text="MaterialButton"
+            app:cornerRadius="@dimen/dim50" />
     </LinearLayout>
 </layout>
