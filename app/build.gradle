@@ -21,7 +21,7 @@ android {
 
         def aboutTitle = System.getenv("ABOUTTITLE")
 //        buildConfigField "String", "BUILD_TYPE", project.BUILD_TYPE
-        buildConfigField "String", "API_ENVIRONMENT", project.API_ENVIRONMENT
+        buildConfigField "String", "API_ENVIRONMENT", project.API_ENVIRONMENT 
         buildConfigField "String", "ABOUTTITLE", project.ABOUTTITLE
 //        buildConfigField "String", "ABOUTTITLE", aboutTitle ? aboutTitle : ABOUTTITLE
 
