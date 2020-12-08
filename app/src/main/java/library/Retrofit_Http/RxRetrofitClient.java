@@ -3,6 +3,7 @@ package library.Retrofit_Http;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 import library.App.HttpConstants;
 import library.Retrofit_Http.HttpTools.BaseObserver;
@@ -21,6 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 /**
+ *
  */
 public class RxRetrofitClient {
 
@@ -64,19 +66,20 @@ public class RxRetrofitClient {
     }
 
     //请求后台数据
-    public void execute(final RequestBean requestBean, final Class clazz, final ICallBack iCallBack) {
+    public void execute(final RequestBean requestBean, final Class clazz, final ICallBack iCallBack,
+                        CompositeDisposable compositeDisposable) {
         iCallBack.onStart();
         if (HttpConstants.METHOD_GET.equalsIgnoreCase(requestBean.getRequestMethod())) {
             if (requestBean.isPostQuery()) {
                 apiServer.get(HttpDataTools.getPath(requestBean.getPath()))
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new BaseObserver(iCallBack, clazz));
-            }else{
+                        .subscribe(new BaseObserver(iCallBack, clazz,compositeDisposable));
+            } else {
                 apiServer.get(HttpDataTools.getPath(requestBean.getPath()), HttpDataTools.getGetSendData(requestBean.getBsrqBean()))
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new BaseObserver(iCallBack, clazz));
+                        .subscribe(new BaseObserver(iCallBack, clazz,compositeDisposable));
             }
         } else if (HttpConstants.METHOD_POST.equalsIgnoreCase(requestBean.getRequestMethod())) {
 //            实体类提交
@@ -85,57 +88,57 @@ public class RxRetrofitClient {
                         //form表单提交
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new BaseObserver(iCallBack, clazz));
-            }else{
-                if(requestBean.isDownLoad()){
+                        .subscribe(new BaseObserver(iCallBack, clazz,compositeDisposable));
+            } else {
+                if (requestBean.isDownLoad()) {
                     LogUtils.loge("============上传进度==1111=");
                     apiServer.upLoadFile(HttpDataTools.getPath(requestBean.getPath()), HttpDataTools.getUploadPart(requestBean, new UploadProgressListener() {
                         @Override
                         public void onProgress(long currentBytesCount, long totalBytesCount) {
-                            LogUtils.loge("============上传进度==="+currentBytesCount+"==="+totalBytesCount);
+                            LogUtils.loge("============上传进度===" + currentBytesCount + "===" + totalBytesCount);
                         }
                     }))
                             //form表单提交
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(new BaseObserver(iCallBack, clazz));
-                }else{
+                            .subscribe(new BaseObserver(iCallBack, clazz,compositeDisposable));
+                } else {
                     apiServer.post(HttpDataTools.getPath(requestBean.getPath()), HttpDataTools.getPostSendData(requestBean))
                             //form表单提交
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(new BaseObserver(iCallBack, clazz));
+                            .subscribe(new BaseObserver(iCallBack, clazz,compositeDisposable));
                 }
             }
         } else if (HttpConstants.METHOD_PUT.equalsIgnoreCase(requestBean.getRequestMethod())) {
 //            实体类提交
-            if(requestBean.isPostQuery()){
+            if (requestBean.isPostQuery()) {
                 apiServer.put(HttpDataTools.getPath(requestBean.getPath()), HttpDataTools.getGetSendData(requestBean.getBsrqBean()))
                         //form表单提交
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new BaseObserver(iCallBack, clazz));
-            }else{
+                        .subscribe(new BaseObserver(iCallBack, clazz,compositeDisposable));
+            } else {
                 apiServer.put(HttpDataTools.getPath(requestBean.getPath()), HttpDataTools.getPostSendData(requestBean))
                         //form表单提交
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new BaseObserver(iCallBack, clazz));
+                        .subscribe(new BaseObserver(iCallBack, clazz,compositeDisposable));
             }
         } else if (HttpConstants.METHOD_DELETE.equalsIgnoreCase(requestBean.getRequestMethod())) {
 //            实体类提交
-            if(requestBean.isPostQuery()){
+            if (requestBean.isPostQuery()) {
                 apiServer.delete(HttpDataTools.getPath(requestBean.getPath()), HttpDataTools.getGetSendData(requestBean.getBsrqBean()))
                         //form表单提交
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new BaseObserver(iCallBack, clazz));
-            }else{
+                        .subscribe(new BaseObserver(iCallBack, clazz,compositeDisposable));
+            } else {
                 apiServer.delete(HttpDataTools.getPath(requestBean.getPath()))
                         //form表单提交
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new BaseObserver(iCallBack, clazz));
+                        .subscribe(new BaseObserver(iCallBack, clazz,compositeDisposable));
             }
         }
     }

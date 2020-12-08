@@ -1,8 +1,6 @@
 package library.Retrofit_Http.HttpTools;
 
-import android.content.Intent;
 import android.text.TextUtils;
-
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,16 +9,12 @@ import java.io.IOException;
 import java.net.ConnectException;
 
 import io.reactivex.Observer;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-
 import library.Retrofit_Http.RequBean.ResponseBean;
-
 import library.Retrofit_Http.icallBack.ICallBack;
 import library.Retrofit_Http.icallBack.ICallBackPro;
-
 import library.utils.LogUtils;
-
-
 import library.utils.ToastUtil;
 import okhttp3.ResponseBody;
 import retrofit2.HttpException;
@@ -37,21 +31,30 @@ public class BaseObserver implements Observer<ResponseBean> {
     private ICallBack iCallBack;
     private ICallBackPro iCallBackPro;
     private Class clazz;
-
+    private CompositeDisposable compositeDisposable;
     private long startTime;
+    private Disposable mDisposable;
 
-    public BaseObserver(ICallBack iCallBack, Class clazz) {
+    public BaseObserver(ICallBack iCallBack, Class clazz, CompositeDisposable compositeDisposable) {
         this.iCallBack = iCallBack;
         this.clazz = clazz;
+        this.compositeDisposable = compositeDisposable;
     }
 
-    public BaseObserver(ICallBackPro iCallBack, Class clazz) {
+    public BaseObserver(ICallBackPro iCallBack, Class clazz, CompositeDisposable compositeDisposable) {
         this.iCallBackPro = iCallBack;
         this.clazz = clazz;
+        this.compositeDisposable = compositeDisposable;
     }
 
     @Override
     public void onComplete() {
+        if (compositeDisposable != null) {
+            if (mDisposable != null) {
+                compositeDisposable.delete(this.mDisposable);
+            }
+        }
+
         if (iCallBack == null) {
             iCallBackPro.onFinish();
         } else {
@@ -103,7 +106,10 @@ public class BaseObserver implements Observer<ResponseBean> {
 
     @Override
     public void onSubscribe(Disposable d) {
-
+        if (compositeDisposable != null) {
+            this.mDisposable = d;
+            compositeDisposable.add(d);
+        }
     }
 
     @Override
@@ -119,9 +125,9 @@ public class BaseObserver implements Observer<ResponseBean> {
                     }
                 } else {
                     if (iCallBack == null) {
-                        iCallBackPro.onError(responseBean.getCode(),responseBean.getMsg());
+                        iCallBackPro.onError(responseBean.getCode(), responseBean.getMsg());
                     } else {
-                        iCallBack.onError(responseBean.getCode(),responseBean.getMsg());
+                        iCallBack.onError(responseBean.getCode(), responseBean.getMsg());
                     }
                 }
                 break;
@@ -139,6 +145,11 @@ public class BaseObserver implements Observer<ResponseBean> {
                     iCallBack.onError(respBean.getCode(), respBean.getMsg());
                 }
                 break;
+        }
+        if (compositeDisposable != null) {
+            if (mDisposable != null) {
+                compositeDisposable.delete(this.mDisposable);
+            }
         }
     }
 

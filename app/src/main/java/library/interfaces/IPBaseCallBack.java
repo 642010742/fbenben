@@ -9,7 +9,7 @@ package library.interfaces;
  */
 public interface IPBaseCallBack {
 
-     void onSuccess(Object oj,int type);
+    void onSuccess(int type, Object oj);
 
-     void onError(int code,String msg);
+    void onError(int type, int code, String msg);
 }
