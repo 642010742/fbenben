@@ -3,11 +3,12 @@ package library.commonModel;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import androidx.databinding.Bindable;
-import androidx.annotation.ColorRes;
-import androidx.annotation.Dimension;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+
+import androidx.annotation.ColorRes;
+import androidx.annotation.Dimension;
+import androidx.databinding.Bindable;
 
 import com.dwz.mvvmdemo.BR;
 import com.dwz.mvvmdemo.R;
@@ -71,15 +72,15 @@ public class TitleOptions extends BaseModel {
 
     //  title 右边文字的大小
     @Dimension
-    public float rightSize = AppContexts.App().getResources().getDimension(R.dimen.txt30)/AppContexts.sScale;
+    public float rightSize = AppContexts.App().getResources().getDimension(R.dimen.sp_15)/AppContexts.sScale;
 
     //  title 左边文字的大小
     @Dimension
-    public float leftSize = AppContexts.App().getResources().getDimension(R.dimen.txt30)/AppContexts.sScale;
+    public float leftSize = AppContexts.App().getResources().getDimension(R.dimen.sp_15)/AppContexts.sScale;
 
     //  title 中间文字的大小
     @Dimension
-    public float centerSize = AppContexts.App().getResources().getDimension(R.dimen.txt34)/AppContexts.sScale;
+    public float centerSize = AppContexts.App().getResources().getDimension(R.dimen.sp_17)/AppContexts.sScale;
 
 
     @Bindable

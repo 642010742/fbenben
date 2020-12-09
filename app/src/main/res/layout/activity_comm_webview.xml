@@ -9,12 +9,12 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dim94">
+        android:layout_height="@dimen/dp_47">
 
         <RelativeLayout
             android:id="@+id/back"
-            android:layout_width="@dimen/dim94"
-            android:layout_height="@dimen/dim94">
+            android:layout_width="@dimen/dp_47"
+            android:layout_height="@dimen/dp_47">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -30,7 +30,7 @@
             android:layout_centerInParent="true"
             android:text=""
             android:textColor="@color/c1c1c1d"
-            android:textSize="@dimen/txt34"
+            android:textSize="@dimen/sp_17"
             android:textStyle="bold" />
 
     </RelativeLayout>

@@ -6,8 +6,8 @@
     android:gravity="center_horizontal">
     <EditText
         android:id="@+id/et_pw1"
-        android:layout_width="@dimen/pwd_height"
-        android:layout_height="@dimen/pwd_height"
+        android:layout_width="@dimen/dp_48"
+        android:layout_height="@dimen/dp_48"
         android:textColorHint="@android:color/transparent"
         android:cursorVisible="false"
         android:gravity="center"
@@ -17,8 +17,8 @@
         android:layout_marginLeft="5dp"/>
     <EditText
         android:id="@+id/et_pw2"
-        android:layout_width="@dimen/pwd_height"
-        android:layout_height="@dimen/pwd_height"
+        android:layout_width="@dimen/dp_48"
+        android:layout_height="@dimen/dp_48"
         android:gravity="center"
         android:maxLength="1"
         android:inputType="number"
@@ -26,8 +26,8 @@
         android:layout_marginLeft="5dp"/>
     <EditText
         android:id="@+id/et_pw3"
-        android:layout_width="@dimen/pwd_height"
-        android:layout_height="@dimen/pwd_height"
+        android:layout_width="@dimen/dp_48"
+        android:layout_height="@dimen/dp_48"
         android:gravity="center"
         android:maxLength="1"
         android:inputType="number"
@@ -35,8 +35,8 @@
         android:layout_marginLeft="5dp"/>
     <EditText
         android:id="@+id/et_pw4"
-        android:layout_width="@dimen/pwd_height"
-        android:layout_height="@dimen/pwd_height"
+        android:layout_width="@dimen/dp_48"
+        android:layout_height="@dimen/dp_48"
         android:gravity="center"
         android:maxLength="1"
         android:inputType="number"
@@ -44,8 +44,8 @@
         android:layout_marginLeft="5dp"/>
     <EditText
         android:id="@+id/et_pw5"
-        android:layout_width="@dimen/pwd_height"
-        android:layout_height="@dimen/pwd_height"
+        android:layout_width="@dimen/dp_48"
+        android:layout_height="@dimen/dp_48"
         android:gravity="center"
         android:maxLength="1"
         android:inputType="number"
@@ -53,8 +53,8 @@
         android:layout_marginLeft="5dp"/>
     <EditText
         android:id="@+id/et_pw6"
-        android:layout_width="@dimen/pwd_height"
-        android:layout_height="@dimen/pwd_height"
+        android:layout_width="@dimen/dp_48"
+        android:layout_height="@dimen/dp_48"
         android:gravity="center"
         android:maxLength="1"
         android:inputType="number"

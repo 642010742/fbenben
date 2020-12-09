@@ -30,5 +30,34 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp" />
+
+        <TextView
+            android:layout_width="@dimen/dp_300"
+            android:layout_height="@dimen/dp_150"
+            android:background="@color/ff463c"
+            android:text="哈撒给会不会那种剥悬壶济世接口是达克赛德加快速度接口"
+            android:textSize="@dimen/sp_25" />
+
+        <TextView
+            android:layout_width="@dimen/dp_300"
+            android:layout_height="@dimen/dp_150"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@color/e29c0c"
+            android:text="哈撒给会不会那种剥悬壶济世接口是达克赛德加快速度接口"
+            android:textSize="@dimen/sp_25" />
+
+        <TextView
+            android:layout_width="@dimen/dp_300"
+            android:layout_height="@dimen/dp_150"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@color/c3caaff"
+            android:text="哈撒给会不会那种剥悬壶济世接口是达克赛德加快速度接口"
+            android:textSize="@dimen/sp_25" />
+
+        <TextView
+            android:id="@+id/minwidth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp_25"/>
     </LinearLayout>
 </layout>

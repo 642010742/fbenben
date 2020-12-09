@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:clipChildren="false">
 
-    <library.weiget.banner.view.BannerViewPager
+    <library.widget.banner.view.BannerViewPager
         android:id="@+id/bannerViewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -7,7 +7,7 @@
 </data>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dim100"
+        android:layout_height="@dimen/dp_50"
         android:gravity="center">
         <TextView
             android:layout_width="wrap_content"

@@ -16,7 +16,7 @@
 
     </item>
 
-    <item android:top="@dimen/dim2">
+    <item android:top="@dimen/dp_1">
 
         <shape android:shape="rectangle" >
             <solid android:color="@color/ffffff" />
