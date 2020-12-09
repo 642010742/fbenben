@@ -1,7 +1,6 @@
-package library.utils;
+package library.Retrofit_Http.RequBean;
 
 import library.App.HttpConstants;
-import library.Retrofit_Http.RequBean.RequestBean;
 import library.Retrofit_Http.RequBean.baseBean.BaseRequestBean;
 
 /**
