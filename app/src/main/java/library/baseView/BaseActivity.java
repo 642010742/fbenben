@@ -3,13 +3,19 @@ package library.baseView;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+
+import androidx.annotation.ColorInt;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
+
 import android.os.Build;
 import android.os.Bundle;
+
 import androidx.annotation.ColorRes;
 import androidx.annotation.Dimension;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -42,8 +48,9 @@ public abstract class BaseActivity<VM extends BaseVModel> extends AppCompatActiv
     public VM vm = null;
 
     private TitleBarBinding title;
-    public  TitleOptions titleOptions;
+    public TitleOptions titleOptions;
     public Context mContext;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,21 +59,21 @@ public abstract class BaseActivity<VM extends BaseVModel> extends AppCompatActiv
             vm = getVMClass().newInstance();
             vm.setmView(this);
             vm.mContext = this;
-            title = DataBindingUtil.setContentView(this,R.layout.title_bar);
+            title = DataBindingUtil.setContentView(this, R.layout.title_bar);
             titleOptions = title();
-            vm.setTitleOptions(titleOptions,this,vm);
-            typeTitle(titleOptions,getIntent());
+            vm.setTitleOptions(titleOptions, this, vm);
+            typeTitle(titleOptions, getIntent());
             AppManager.getAppManager().activityCreated(this);
             this.title.setTitle(titleOptions);
             // 修改状态栏颜色
-            setBarColor(initStatusBarColor());
-            vm.bind =  DataBindingUtil.inflate(getLayoutInflater(),LayoutId(), (ViewGroup) this.title.getRoot(),true);
-            if(titleOptions!=null)
+            StatusBarUtil.setColor(this, ContextCompat.getColor(mContext, initStatusBarColor()));
+            vm.bind = DataBindingUtil.inflate(getLayoutInflater(), LayoutId(), (ViewGroup) this.title.getRoot(), true);
+            if (titleOptions != null)
                 title.baseLayoutTitle.llBaseTitle.setVisibility(View.VISIBLE);
             else title.baseLayoutTitle.llBaseTitle.setVisibility(View.GONE);
 
-            vm.bind.setVariable(BR.vm,vm);
-           // else vm.bind =  DataBindingUtil.setContentView(this,LayoutId());
+            vm.bind.setVariable(BR.vm, vm);
+            // else vm.bind =  DataBindingUtil.setContentView(this,LayoutId());
         } catch (IllegalAccessException e) {
         } catch (InstantiationException e) {
             e.printStackTrace();
@@ -91,7 +98,6 @@ public abstract class BaseActivity<VM extends BaseVModel> extends AppCompatActiv
     }
 
 
-
     @Override
     public void typeTitle(TitleOptions titleOptions, Intent intent) {
         // 在此改变 title 内容
@@ -101,22 +107,6 @@ public abstract class BaseActivity<VM extends BaseVModel> extends AppCompatActiv
     public TitleOptions title() {
         return null;
     }
-
-    /**
-     * 沉浸式状态栏
-     */
-    public void setBarColor(int color){
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(getResources().getColor(android.R.color.white));
-            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        }
-        StatusBarUtil.setColor(this, getResources().getColor(color));
-    }
-
-
 
     @Override
     public int initStatusBarColor() {
@@ -134,18 +124,16 @@ public abstract class BaseActivity<VM extends BaseVModel> extends AppCompatActiv
 //            Intent noNetIntent = new Intent(this, NetLoadErrActivity.class);
 //            startActivity(noNetIntent);
 //        }else{
-            startActivity(intent);
-            if(isClose){
-                this.finish();
-            }
+        startActivity(intent);
+        if (isClose) {
+            this.finish();
+        }
         ///}
     }
 
     /**
-     *
      * @param intent
-     * @param isClose
-     * 清除activity站内之上的activity
+     * @param isClose 清除activity站内之上的activity
      */
     @Override
     public void pStartSingleActivity(Intent intent, boolean isClose) {
@@ -153,9 +141,9 @@ public abstract class BaseActivity<VM extends BaseVModel> extends AppCompatActiv
 //            Intent noNetIntent = new Intent(this, NetLoadErrActivity.class);
 //            startActivity(noNetIntent);
 //        }else{
-            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            if(isClose) finish();
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        if (isClose) finish();
         //}
     }
 
@@ -171,7 +159,7 @@ public abstract class BaseActivity<VM extends BaseVModel> extends AppCompatActiv
 //            Intent noNetIntent = new Intent(this, NetLoadErrActivity.class);
 //            startActivity(noNetIntent);
 //        }else{
-            startActivityForResult(intent,requestCode);
+        startActivityForResult(intent, requestCode);
         //}
     }
 
@@ -186,13 +174,12 @@ public abstract class BaseActivity<VM extends BaseVModel> extends AppCompatActiv
     }
 
 
-
     @Override
     protected void onResume() {
         super.onResume();
         if (this instanceof MainActivity) {
             // 需要做下特殊处理
-        }else{
+        } else {
             netLoadErr();
         }
     }
@@ -215,14 +202,14 @@ public abstract class BaseActivity<VM extends BaseVModel> extends AppCompatActiv
 
     @Override
     public void register() {
-        if(initEvent())
-        EventBus.getDefault().register(this);
+        if (initEvent())
+            EventBus.getDefault().register(this);
     }
 
     @Override
     public void unRegister() {
-        if(initEvent())
-        EventBus.getDefault().unregister(this);
+        if (initEvent())
+            EventBus.getDefault().unregister(this);
     }
 
     @Override
@@ -235,36 +222,40 @@ public abstract class BaseActivity<VM extends BaseVModel> extends AppCompatActiv
         //刷新数据
     }
 
-    public void setTitleRightTextColor(@ColorRes int color){
+    public void setTitleRightTextColor(@ColorRes int color) {
         title.baseLayoutTitle.textRight.setTextColor(getResources().getColor(color));
     }
 
-    public void setTitleLeftTextColor(@ColorRes int color){
+    public void setTitleLeftTextColor(@ColorRes int color) {
         title.baseLayoutTitle.textLeft.setTextColor(getResources().getColor(color));
     }
 
-    public void setTitleCenterTextColor(@ColorRes int color){
+    public void setTitleCenterTextColor(@ColorRes int color) {
         title.baseLayoutTitle.textTitleCenter.setTextColor(getResources().getColor(color));
     }
 
-    public void setTitleBackgroudColor(@ColorRes int color){
+    public void setTitleBackgroudColor(@ColorRes int color) {
         title.baseLayoutTitle.llBaseTitle.setBackgroundColor(getResources().getColor(color));
     }
 
-    public void setTitleRightTextSize(@Dimension float size){
-        title.baseLayoutTitle.textRight.setTextSize(size/ AppContexts.sScale);
+    public void setTitleRightTextSize(@Dimension float size) {
+        title.baseLayoutTitle.textRight.setTextSize(size / AppContexts.sScale);
     }
 
-    public void setTitleLeftTextSize(@Dimension float size){
-        title.baseLayoutTitle.textLeft.setTextSize(size/AppContexts.sScale);
+    public void setTitleLeftTextSize(@Dimension float size) {
+        title.baseLayoutTitle.textLeft.setTextSize(size / AppContexts.sScale);
     }
 
-    public void setTitleCenterTextSize(@Dimension float size){
-        title.baseLayoutTitle.textTitleCenter.setTextSize(size/AppContexts.sScale);
+    public void setTitleCenterTextSize(@Dimension float size) {
+        title.baseLayoutTitle.textTitleCenter.setTextSize(size / AppContexts.sScale);
     }
 
 
-    public void netLoadErr(){
-        setBarColor(R.color.ffffff);
+    public void netLoadErr() {
+        StatusBarUtil.setColor(this, ContextCompat.getColor(mContext, R.color.ffffff));
+    }
+
+    public void setBarColor(@ColorRes int color) {
+        StatusBarUtil.setColor(this, ContextCompat.getColor(mContext, color));
     }
 }
