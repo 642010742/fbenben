@@ -18,6 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:appComponentFactory">
 
@@ -32,7 +33,7 @@
         </provider>
 
         <activity
-            android:name=".ui.activity.MainActivity"
+            android:name=".ui.activity.CommWebview"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,9 +42,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activity.CommWebview"
+            android:name=".ui.activity.MainActivity"
             android:label="公共网页加载"
             android:screenOrientation="portrait" />
+        <activity android:name=".ui.activity.SecondActivity" />
     </application>
 
 </manifest>

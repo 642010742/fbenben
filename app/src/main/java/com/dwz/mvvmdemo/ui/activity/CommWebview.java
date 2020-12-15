@@ -1,8 +1,12 @@
 package com.dwz.mvvmdemo.ui.activity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -13,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.dwz.mvvmdemo.R;
 
 import library.App.AppConstants;
+import library.utils.LogUtils;
 
 import static android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW;
 
@@ -33,6 +38,9 @@ public class CommWebview extends AppCompatActivity {
 
         comWebTitle.setText(title);
 
+        initWebSetting();
+        setWebviewClient();
+
         if ((url.startsWith("http"))) {
             comWeb.loadUrl(url);
         } else {
@@ -40,8 +48,6 @@ public class CommWebview extends AppCompatActivity {
             comWeb.loadDataWithBaseURL(null, getHtmlData(url), "text/html", "utf-8", null);
         }
 
-        initWebSetting();
-        setWebviewClient();
         initListener();
     }
 
@@ -93,8 +99,27 @@ public class CommWebview extends AppCompatActivity {
     }
 
     private void setWebviewClient() {
-        comWeb.setWebChromeClient(new WebChromeClient());
+//        comWeb.setWebChromeClient(new WebChromeClient());
         comWeb.setWebViewClient(new WebViewClient());
+//        comWeb.setWebViewClient(new WebViewClient() {
+//            @Override
+//            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+//                if (request.getUrl().toString().startsWith("http")) {
+//                    //false webview处理url是在wenbview内部执行
+//                    return false;
+//                }
+//                //try-catch 转化url 有可能是打开本地app的url,如果没有安装app会发生崩溃
+//                try {
+//                    Intent intent = new Intent(Intent.ACTION_VIEW, request.getUrl());
+//                    startActivity(intent);
+//                } catch (Exception e) {
+//                    Log.e("TAG", " Exception is ==== >>> " + e);
+//                }
+//                //true webview处理url是根据程序来执行
+//                return true;
+//            }
+//
+//        });
     }
 
     private void initListener() {
