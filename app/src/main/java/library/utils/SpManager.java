@@ -19,7 +19,6 @@ public class SpManager {
 
     public static class KEY {
         public static final String token = "token";
-        public static final String userInfo = "userInfo";
     }
 
     // 登录后的配置
@@ -49,6 +48,15 @@ public class SpManager {
         return spApp.getString(key, "");
     }
 
+
+    /**
+     * 设置登录String
+     * @param key
+     * @param value
+     */
+    public static void setLString(String key, String value) {
+        spLogin.edit().putString(key, value).commit();
+    }
 
     /***
      * 获取登录String
@@ -81,7 +89,6 @@ public class SpManager {
     public static boolean isLogin() {
         return !TextUtils.isEmpty(SpManager.getLString(KEY.token));
     }
-
 
 
     /**
