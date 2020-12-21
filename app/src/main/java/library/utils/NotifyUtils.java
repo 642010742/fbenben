@@ -32,12 +32,20 @@ import static android.content.Context.NOTIFICATION_SERVICE;
  * @zmf
  */
 public class NotifyUtils {
+    private static NotifyUtils notifyUtils;
     //每个通知指定的id  保证每个通知指定的id是不同的
     private static final int PUSH_NOTIFICATION_ID = 1;
     //渠道id  随便定义 保证全局唯一性
     private static final String PUSH_CHANNEL_ID = "PUSH_NOTIFY_ID";
     //渠道名称 给用户查看 清楚表示渠道用途
     private static final String PUSH_CHANNEL_NAME = "PUSH_NOTIFY_NAME";
+
+    public static NotifyUtils getInstance() {
+        if (notifyUtils == null) {
+            notifyUtils = new NotifyUtils();
+        }
+        return notifyUtils;
+    }
 
     /**
      * 查看是否允许通知栏显示消息
@@ -46,7 +54,7 @@ public class NotifyUtils {
      * @return
      */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public static boolean isNotificationEnabled(Context context) {
+    public boolean isNotificationEnabled(Context context) {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             //8.0手机以上
@@ -57,23 +65,18 @@ public class NotifyUtils {
 
         String CHECK_OP_NO_THROW = "checkOpNoThrow";
         String OP_POST_NOTIFICATION = "OP_POST_NOTIFICATION";
-
         AppOpsManager mAppOps = (AppOpsManager) context.getSystemService(Context.APP_OPS_SERVICE);
         ApplicationInfo appInfo = context.getApplicationInfo();
         String pkg = context.getApplicationContext().getPackageName();
         int uid = appInfo.uid;
-
         Class appOpsClass = null;
-
         try {
             appOpsClass = Class.forName(AppOpsManager.class.getName());
             Method checkOpNoThrowMethod = appOpsClass.getMethod(CHECK_OP_NO_THROW, Integer.TYPE, Integer.TYPE,
                     String.class);
             Field opPostNotificationValue = appOpsClass.getDeclaredField(OP_POST_NOTIFICATION);
-
             int value = (Integer) opPostNotificationValue.get(Integer.class);
             return ((Integer) checkOpNoThrowMethod.invoke(mAppOps, value, uid, pkg) == AppOpsManager.MODE_ALLOWED);
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -109,7 +112,10 @@ public class NotifyUtils {
         NotificationCompat.Builder build = new NotificationCompat.Builder(AppContexts.App(), PUSH_CHANNEL_ID);
         build.setContentTitle(title);//设置通知栏标题
         build.setContentText(content); //设置通知栏显示内容
-        build.setContentIntent(pendingIntent);//设置通知栏点击意图
+        if (pendingIntent != null) {
+            //设置通知栏点击意图
+            build.setContentIntent(pendingIntent);
+        }
         //build.setNumber(3); //设置通知集合的数量   
 //        build.setTicker("有新消息"); //通知首次出现在通知栏，带上升动画效果的     
         build.setWhen(System.currentTimeMillis());//通知产生的时间，会在通知信息里显示，一般是系统获取到的时间
