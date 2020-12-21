@@ -97,9 +97,14 @@ public class NotifyUtils {
     /**
      * 创建通知
      *
-     * @param pendingIntent
+     * @param intent
      */
-    public void creatNotify(String title, String content, PendingIntent pendingIntent) {
+    public void creatNotify(String title, String content, Intent intent) {
+        PendingIntent pendingIntent = null;
+        if (intent != null) {
+            pendingIntent = PendingIntent.getActivity(
+                    AppContexts.App(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        }
         NotificationManager manager = (NotificationManager) AppContexts.App().getSystemService(NOTIFICATION_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(
