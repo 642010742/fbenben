@@ -33,7 +33,7 @@
         </provider>
 
         <activity
-            android:name=".ui.activity.CommWebview"
+            android:name=".ui.activity.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,10 +42,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activity.MainActivity"
-            android:label="公共网页加载"
+            android:name=".ui.activity.CommWebview"
             android:screenOrientation="portrait" />
-        <activity android:name=".ui.activity.SecondActivity" />
     </application>
 
 </manifest>

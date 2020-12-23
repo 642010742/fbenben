@@ -3,6 +3,7 @@ package com.dwz.mvvmdemo.ui.activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.webkit.WebChromeClient;
@@ -41,13 +42,14 @@ public class CommWebview extends AppCompatActivity {
         initWebSetting();
         setWebviewClient();
 
-        if ((url.startsWith("http"))) {
-            comWeb.loadUrl(url);
-        } else {
-            //解决6.0乱码问题
-            comWeb.loadDataWithBaseURL(null, getHtmlData(url), "text/html", "utf-8", null);
+        if (!TextUtils.isEmpty(url)) {
+            if ((url.startsWith("http"))) {
+                comWeb.loadUrl(url);
+            } else {
+                //解决6.0乱码问题
+                comWeb.loadDataWithBaseURL(null, getHtmlData(url), "text/html", "utf-8", null);
+            }
         }
-
         initListener();
     }
 
