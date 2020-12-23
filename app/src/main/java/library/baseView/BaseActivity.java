@@ -84,7 +84,6 @@ public abstract class BaseActivity<VM extends BaseVModel> extends AppCompatActiv
 
     public abstract Class<VM> getVMClass();
 
-
     public abstract int LayoutId();
 
     public abstract void initViews();
@@ -173,6 +172,10 @@ public abstract class BaseActivity<VM extends BaseVModel> extends AppCompatActiv
 
     }
 
+    @Override
+    public void initListener() {
+
+    }
 
     @Override
     protected void onResume() {

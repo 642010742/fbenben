@@ -4,18 +4,20 @@ import android.content.Intent;
 
 public interface IUpView {
 
-     void updataView(Object obj, int mark);
+    void initListener();
 
-     void pStartActivity(Intent intent, boolean isClose);
+    void updataView(Object obj, int mark);
 
-     void pStartSingleActivity(Intent intent, boolean isClose);
+    void pStartActivity(Intent intent, boolean isClose);
 
-     void pCloseActivity();
+    void pStartSingleActivity(Intent intent, boolean isClose);
 
-     void pStartActivityForResult(Intent intent, int requestCode);
+    void pCloseActivity();
 
-     void showDialog(String msg);
+    void pStartActivityForResult(Intent intent, int requestCode);
 
-     void dismissDialog();
+    void showDialog(String msg);
+
+    void dismissDialog();
 
 }

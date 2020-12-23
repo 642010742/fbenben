@@ -214,5 +214,8 @@ public abstract class BaseFragment<VM extends BaseVModel> extends Fragment imple
 
     }
 
+    @Override
+    public void initListener() {
 
+    }
 }

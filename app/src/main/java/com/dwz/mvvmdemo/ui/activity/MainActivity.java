@@ -37,10 +37,6 @@ public class MainActivity extends BaseActivity<MainVModel> implements OnTabMenuC
 
     @Override
     public void initViews() {
-//        DaggerDPComponent.builder()
-//                .appComponent(AppContexts.getInstance().getAppComponent())
-//                .build()
-//                .inject(this);
         initTab();
     }
 

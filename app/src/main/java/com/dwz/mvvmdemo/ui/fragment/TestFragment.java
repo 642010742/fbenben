@@ -32,7 +32,7 @@ public class TestFragment extends BaseFragment<TestFragmentVmodel> {
     @Override
     public void initView() {
         VersionInfoHelper instance = VersionInfoHelper.getInstance(getActivity());
-        vm.bind.showVersionInfo.setText(instance.getVersionCode()+"        "+instance.getVersionName());
+        vm.bind.showVersionInfo.setText(instance.getVersionCode() + "        " + instance.getVersionName());
         vm.bind.aboutTitle.setText(BuildConfig.ABOUTTITLE);
         vm.bind.buildType.setText(BuildConfig.API_ENVIRONMENT);
 
@@ -44,13 +44,13 @@ public class TestFragment extends BaseFragment<TestFragmentVmodel> {
         float heightDP = heightPixels / density;
         float widthDP = widthPixels / density;
         float smallestWidthDP;
-        if(widthDP < heightDP) {
+        if (widthDP < heightDP) {
             smallestWidthDP = widthDP;
-        }else {
+        } else {
             smallestWidthDP = heightDP;
         }
 
-        vm.bind.minwidth.setText(smallestWidthDP+"");
+        vm.bind.minwidth.setText(smallestWidthDP + "");
     }
 
 }
