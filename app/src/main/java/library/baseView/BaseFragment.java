@@ -64,6 +64,7 @@ public abstract class BaseFragment<VM extends BaseVModel> extends Fragment imple
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView();
+        initListener();
     }
 
     protected void hideSoftKeyboard() {

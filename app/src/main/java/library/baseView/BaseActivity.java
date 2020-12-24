@@ -79,6 +79,7 @@ public abstract class BaseActivity<VM extends BaseVModel> extends AppCompatActiv
             e.printStackTrace();
         }
         initViews();
+        initListener();
         register();
     }
 
