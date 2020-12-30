@@ -11,6 +11,6 @@ public class TitleImageLoad {
     @BindingAdapter("imageTitle")
     public static void setTitleImage(ImageView view, int imageRes){
         if(imageRes == -1) return;
-        else  view.setBackgroundResource(imageRes);
+        else  view.setImageResource(imageRes);
     }
 }

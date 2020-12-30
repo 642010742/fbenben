@@ -513,6 +513,15 @@ public class StatusBarUtil {
     }
 
     @TargetApi(Build.VERSION_CODES.M)
+    public static void setLightModeUnFullScreen(Activity activity) {
+        setMIUIStatusBarDarkIcon(activity, true);
+        setMeizuStatusBarDarkIcon(activity, true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
     public static void setDarkMode(Activity activity) {
         setMIUIStatusBarDarkIcon(activity, false);
         setMeizuStatusBarDarkIcon(activity, false);
