@@ -9,11 +9,10 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.content.FileProvider;
 import android.text.TextUtils;
 import android.util.Log;
+
+import androidx.core.content.FileProvider;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -48,6 +47,33 @@ public class FileUtils {
     public static final String VOICE_PATH = AppContexts.App().getFilesDir().getPath() + "/safe-vault/" + UserId + "/voice";
     public static final String PATH = AppContexts.App().getFilesDir().getPath();
 
+    /**
+     * 根据下载路径获取文件名
+     *
+     * @param url
+     * @return
+     */
+    public static String extractFileNameFromURL(String url) {
+        return url.substring(url.lastIndexOf('/') + 1);
+    }
+
+    /**
+     * 判断文件是否存在
+     *
+     * @param parent
+     * @param fileName
+     * @return
+     */
+    public static boolean fileIsExit(String parent, String fileName) {
+        try {
+            File f = new File(parent, fileName);
+            return f.exists();
+        } catch (Exception e) {
+            return false;
+        }
+
+
+    }
 
     /**
      * 根据文件路径获取文件名称
@@ -526,7 +552,8 @@ public class FileUtils {
 
     /**
      * 随机获取图片名称
-     *FileUtils.getAppImageName(AppConstants.startImage)
+     * FileUtils.getAppImageName(AppConstants.startImage)
+     *
      * @param name
      * @return
      */
