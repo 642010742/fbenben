@@ -14,6 +14,7 @@ import android.view.inputmethod.InputMethodManager;
 
 
 import com.dwz.mvvmdemo.BR;
+import com.dwz.mvvmdemo.ui.activity.LoginActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -221,14 +222,14 @@ public abstract class BaseFragment<VM extends BaseVModel> extends Fragment imple
 
     }
     public void clearAllActivityToLogin(){
-//        AppManager.getAppManager().finishAllActivity();
-//        Intent intent = new Intent(getActivity(), LoginActivity.class);
-//        pStartActivity(intent, true);
+        AppManager.getAppManager().finishAllActivity();
+        Intent intent = new Intent(getActivity(), LoginActivity.class);
+        pStartActivity(intent, true);
     }
 
     public void toLogin(){
-//        Intent intent = new Intent(getActivity(), LoginActivity.class);
-//        pStartActivity(intent, false);
+        Intent intent = new Intent(getActivity(), LoginActivity.class);
+        pStartActivity(intent, false);
     }
 
 }
