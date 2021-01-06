@@ -12,18 +12,18 @@
         <item name="android:windowEnterAnimation">@anim/in_bottom</item>
         <item name="android:windowExitAnimation">@anim/out_bottom</item>
     </style>
+
+    <style name="share_anim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/pop_enter_anim</item>
+        <item name="android:windowExitAnimation">@anim/pop_exit_anim</item>
+    </style>
+
     <!-- 通用底部细线-->
     <style name="line_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/dp_0_5</item>
         <item name="android:background">#dcdcdd</item>
         <item name="android:layout_marginLeft">@dimen/dp_15</item>
-    </style>
-
-
-    <style name="share_anim" parent="android:Animation">
-        <item name="android:windowEnterAnimation">@anim/pop_enter_anim</item>
-        <item name="android:windowExitAnimation">@anim/pop_exit_anim</item>
     </style>
 
     <style name="line_all_style">
