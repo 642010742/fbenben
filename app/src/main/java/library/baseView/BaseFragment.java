@@ -19,6 +19,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import library.App.AppManager;
 import library.baseVModel.BaseVModel;
 import library.common.eventbus.model.EventModel;
 import library.listener.IUpView;
@@ -219,4 +220,15 @@ public abstract class BaseFragment<VM extends BaseVModel> extends Fragment imple
     public void initListener() {
 
     }
+    public void clearAllActivityToLogin(){
+//        AppManager.getAppManager().finishAllActivity();
+//        Intent intent = new Intent(getActivity(), LoginActivity.class);
+//        pStartActivity(intent, true);
+    }
+
+    public void toLogin(){
+//        Intent intent = new Intent(getActivity(), LoginActivity.class);
+//        pStartActivity(intent, false);
+    }
+
 }

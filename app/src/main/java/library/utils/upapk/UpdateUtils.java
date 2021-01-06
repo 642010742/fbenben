@@ -8,105 +8,160 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.graphics.Point;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.Settings;
-import android.text.Html;
 import android.text.TextUtils;
-import android.text.method.LinkMovementMethod;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.FileProvider;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.dwz.mvvmdemo.R;
-
+import com.dwz.mvvmdemo.ui.activity.CommWebview;
 import java.io.File;
-
+import java.util.ArrayList;
+import java.util.List;
 import library.App.AppConstants;
 import library.App.AppManager;
 import library.listener.BtnDoneListener;
 import library.utils.BackGroundUtils;
 import library.utils.DialogUtils;
 import library.utils.ToastUtil;
-import okhttp3.Request;
-
 
 public class UpdateUtils {
 
-    private static final String appName = "firemen.apk";
+    private static final String appName = "release.apk";
+
+    /***
+     * 更新对话框
+     *
+     * @param
+     */
+
+    public static void showUpdateDialog(final UpdateInfo info, final DownloadManager.ResultCallback callback) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(AppManager.getAppManager().currentActivity());
+        builder.setIcon(android.R.drawable.ic_dialog_info);
+        builder.setTitle("请升级APP至版本" + info.getNewVersion());
+        builder.setMessage(info.getMemo());
+        builder.setCancelable(false);
+
+//        String downUrlPath = HttpConstants.BASE_API_HOST_URL + HttpApiPath.downLoadApk + "?path=" + info.getUrl();
+
+//        LogUtils.d("----updateUrl--->" + downUrlPath);
+//
+//        info.setUrl(downUrlPath);
+
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (Environment.getExternalStorageState().equals(
+                        Environment.MEDIA_MOUNTED)) {
+                    downFile(info.getMemo(), callback); // 在下面的代码段
+                } else {
+//                    Toast.makeText(
+//                            AppManager.getAppManager().currentActivity(),
+//                            "SD卡不可用，请插入SD卡", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+
+        });
+        builder.create().show();
+    }
 
     /**
      * 版本更新弹框
      */
-//    private static XXAdapter<ImageModel> versionAdapter;
-//    private static List<ImageModel> list = new ArrayList<>();
-    public static void showUpDataDialog(final Activity activity, int isFource, String content,
-                                        final BtnDoneListener btnDoneListener) {
+    private static UpVersionAdapter versionAdapter;
+    private static List<String> list = new ArrayList<>();
 
-        final Dialog dialog = new Dialog(activity, R.style.MyDialog);
+    public static void showUpDataDialog(final Activity activity, final UpdateInfo updateInfo,
+                                        final DownloadManager.ResultCallback callback, final BtnDoneListener btnDoneListener) {
+
+        final Dialog dialog = new Dialog(activity, R.style.dialog);
         View view = LayoutInflater.from(activity).
                 inflate(R.layout.upversion_dialog_layout, null, false);
-
         dialog.setContentView(view);
         Window dialogWindow = dialog.getWindow();
-        WindowManager m = (WindowManager) activity.getSystemService(Context.WINDOW_SERVICE);
-        Display d = m.getDefaultDisplay(); // 获取屏幕宽、高用
+//        WindowManager m = (WindowManager) activity.getSystemService(Context.WINDOW_SERVICE);
         WindowManager.LayoutParams p = dialogWindow.getAttributes(); // 获取对话框当前的参数值
-        p.width = (int) (d.getWidth() * 0.8); // 宽度设置为屏幕的0.65
+//        Display d = m.getDefaultDisplay(); // 获取屏幕宽、高用
+        Point point = new Point();
+        activity.getWindowManager().getDefaultDisplay().getSize(point);
+        p.width = (int) (point.x * 0.8); // 宽度设置为屏幕的0.65
         p.height = p.WRAP_CONTENT;
         dialog.setCanceledOnTouchOutside(false);
         dialog.setCancelable(false);
-        BackGroundUtils.backgroundAlpha(activity, 0.5f);
 
-//        RecyclerView listView = (RecyclerView) view.findViewById(R.id.listView);
-//        list.clear();
-//        ImageModel imageModel = new ImageModel();
-//        imageModel.setUrl(updateInfo.getUpContent());
-//        list.add(imageModel);
-//        if (versionAdapter == null) {
-//            versionAdapter = new XXAdapter<>(list, activity);
-//            SingleItemView singleItemView = new SingleItemView(R.layout.item_upversion, BR.item);
-//            versionAdapter.addItemViewDelegate(singleItemView);
-//        }
-//        listView.setAdapter(versionAdapter);
+        BackGroundUtils.backgroundAlpha(activity, 0.8f);
 
-        LinearLayout upVersionLayout = view.findViewById(R.id.upVersionLayout);
-        TextView upVersionForce = view.findViewById(R.id.upVersionForce);
-        TextView upContent = view.findViewById(R.id.upContent);
+        RecyclerView recyclerview = (RecyclerView) view.findViewById(R.id.recyclerview);
+        TextView title = (TextView) view.findViewById(R.id.title);
 
-        //isFource  0-是 1-否
-        upVersionLayout.setVisibility(0 == isFource ? View.GONE : View.VISIBLE);
-        upVersionForce.setVisibility(0 == isFource ? View.VISIBLE : View.GONE);
-        upContent.setText(TextUtils.isEmpty(content) ? "" : Html.fromHtml(content));
-        upContent.setMovementMethod(LinkMovementMethod.getInstance());
+        title.setText(updateInfo.getParamName());
+
+        list.clear();
+        list.add(updateInfo.getUpContent());
+
+        if (versionAdapter == null) {
+            versionAdapter = new UpVersionAdapter(activity, R.layout.item_upversion, list);
+        }
+        recyclerview.setAdapter(versionAdapter);
 
         view.findViewById(R.id.upVersion).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                btnDoneListener.done("");
-            }
-        });
-        view.findViewById(R.id.upVersionForce).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                btnDoneListener.done("");
+//                goToTencentMarket(activity, getPackageName());
+                String loadUrl = updateInfo.getMemo();
+                if (!TextUtils.isEmpty(loadUrl)) {
+                    Intent intent = new Intent(activity, CommWebview.class);
+                    intent.putExtra(AppConstants.IntentKey.WEB_TITLE, "应用详情");
+                    intent.putExtra(AppConstants.IntentKey.WEB_URL, loadUrl);
+                    activity.startActivity(intent);
+                } else {
+                    ToastUtil.showShort("地址有误");
+                }
+                //内部下载
+//                if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+//                    //下载地址
+//                    String loadUrl = updateInfo.getMemo();
+//                    if (!TextUtils.isEmpty(loadUrl) && (loadUrl.contains("http") || loadUrl.contains("https"))) {
+//                        downFile(loadUrl, callback);
+//                    } else {
+//                        ToastUtil.showShort("下载地址有误");
+//                    }
+//                } else {
+//                    ToastUtil.showShort("SD卡不可用，请插入SD卡");
+//                }
 
             }
         });
+
         view.findViewById(R.id.noUpVersion).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
+                btnDoneListener.done("");
             }
         });
 
@@ -121,13 +176,13 @@ public class UpdateUtils {
     }
 
 
-    public static boolean isNeedUpdate(String version) {
+    public static boolean isNeedUpdate(Activity activity,String version) {
 
         String newVersionCodeStr = version.replace(".", "");
 
         try {
             Integer newVersionCode = Integer.valueOf(newVersionCodeStr);
-            int versionCode = VersionInfoHelper.getInstance(AppManager.getAppManager().currentActivity()).getVersionCode();
+            int versionCode = VersionInfoHelper.getInstance(activity).getVersionCode();
 
             if (newVersionCode <= versionCode) {
                 return false;
@@ -136,22 +191,6 @@ public class UpdateUtils {
             }
         } catch (Exception e) {
             return false;
-        }
-    }
-
-    /**
-     * 获取包名
-     *
-     * @return
-     */
-    public static String getPackageName() {
-        try {
-            String packageName = AppManager.getAppManager()
-                    .currentActivity().getPackageName();
-            return packageName;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "包名未知";
         }
     }
 
@@ -231,7 +270,7 @@ public class UpdateUtils {
         Uri newUri;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
 
-            newUri = FileProvider.getUriForFile(AppManager.getAppManager().currentActivity(), AppManager.getAppManager().currentActivity().getPackageName() + ".demo.fileprovider", new File(Environment
+            newUri = FileProvider.getUriForFile(AppManager.getAppManager().currentActivity(), AppManager.getAppManager().currentActivity().getPackageName() + ".fileProvider", new File(Environment
                     .getExternalStorageDirectory(), appName));
 
         } else {
@@ -246,37 +285,6 @@ public class UpdateUtils {
 //            AppManager.getAppManager().exitApp();
 //        }
     }
-
-    public static void upVersion(final Activity activity, String loadUrl) {
-        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            //下载地址
-            if (!TextUtils.isEmpty(loadUrl) && (loadUrl.contains("http") || loadUrl.contains("https"))) {
-                UpdateUtils.downFile(loadUrl, new DownloadManager.ResultCallback() {
-                    @Override
-                    public void onError(Request request, Exception e) {
-
-                    }
-
-                    @Override
-                    public void onResponse(Object response) {
-                        UpdateUtils.installProcess(activity);
-                    }
-
-                    @Override
-                    public void onProgress(double total, double current) {
-                        int proX = (int) (current * 100 / total);
-                        pBar.setProgress(proX >= 100 ? 99 : proX); // 这里就是关键的实时更新进度了！
-                        pBar.setProgressNumberFormat(NumberFormatUtil.oneDecimal(total / 1024.00f / 1024.00f) + "M");
-                    }
-                });
-            } else {
-                ToastUtil.showShort("下载地址有误");
-            }
-        } else {
-            ToastUtil.showShort("SD卡不可用，请插入SD卡");
-        }
-    }
-
 
     //安装应用的流程
     public static void installProcess(final Activity activity) {

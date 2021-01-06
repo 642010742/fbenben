@@ -4,74 +4,103 @@ import library.commonModel.BaseModel;
 
 public class UpdateInfo extends BaseModel {
 
-
 	/**
-	 * versionId : 2
-	 * versionNo : 1.1
-	 * packageUrl : null
-	 * isImposeUpdate : null
-	 * isUpdate : null
-	 * remark : null
-	 * createTime : 2019-07-09 15:56:12
-	 * updateTime : 2019-07-09 15:56:12
-	 * isDeleted : null
+	 * paramKey : APP_VERSION
+	 * paramName : APP版本更新
+	 * paramValue : 更新地址
+	 * memo : 版本更新（service_type==2 为强制更新）
+	 * isConfigurable : 1
+	 * operatorType : null
+	 * operatorId : null
+	 * createTime : 2019-06-10 11:39:03
+	 * updateTime : 2019-06-10 11:39:06
+	 * isDeleted : 0
+	 * serviceType : 2
 	 */
 
-	private String versionId;
-	private String versionNo;
-	private String packageUrl;
-	private int isImposeUpdate;//0-是 1-否
-	private int isUpdate;//0-是 1-否
-	private String remark;
+	private String paramKey;
+	private String paramName;
+	private String paramValue;
+	private String memo;
+	private int isConfigurable;
+	private Object operatorType;
+	private Object operatorId;
 	private String createTime;
 	private String updateTime;
+	private int isDeleted;
+	private String upContent;
+	private String newVersion;
 
-	public String getVersionId() {
-		return versionId;
+	public String getUpContent() {
+		return upContent;
 	}
 
-	public void setVersionId(String versionId) {
-		this.versionId = versionId;
+	public void setUpContent(String upContent) {
+		this.upContent = upContent;
 	}
 
-	public String getVersionNo() {
-		return versionNo;
+	public String getNewVersion() {
+		return newVersion;
 	}
 
-	public void setVersionNo(String versionNo) {
-		this.versionNo = versionNo;
+	public void setNewVersion(String newVersion) {
+		this.newVersion = newVersion;
 	}
 
-	public String getPackageUrl() {
-		return packageUrl;
+	public String getParamKey() {
+		return paramKey;
 	}
 
-	public void setPackageUrl(String packageUrl) {
-		this.packageUrl = packageUrl;
+	public void setParamKey(String paramKey) {
+		this.paramKey = paramKey;
 	}
 
-	public int getIsImposeUpdate() {
-		return isImposeUpdate;
+	public String getParamName() {
+		return paramName;
 	}
 
-	public void setIsImposeUpdate(int isImposeUpdate) {
-		this.isImposeUpdate = isImposeUpdate;
+	public void setParamName(String paramName) {
+		this.paramName = paramName;
 	}
 
-	public int getIsUpdate() {
-		return isUpdate;
+	public String getParamValue() {
+		return paramValue;
 	}
 
-	public void setIsUpdate(int isUpdate) {
-		this.isUpdate = isUpdate;
+	public void setParamValue(String paramValue) {
+		this.paramValue = paramValue;
 	}
 
-	public String getRemark() {
-		return remark;
+	public String getMemo() {
+		return memo;
 	}
 
-	public void setRemark(String remark) {
-		this.remark = remark;
+	public void setMemo(String memo) {
+		this.memo = memo;
+	}
+
+	public int getIsConfigurable() {
+		return isConfigurable;
+	}
+
+	public void setIsConfigurable(int isConfigurable) {
+		this.isConfigurable = isConfigurable;
+	}
+
+	public Object getOperatorType() {
+		return operatorType;
+	}
+
+	public void setOperatorType(Object operatorType) {
+		this.operatorType = operatorType;
+	}
+
+	public Object getOperatorId() {
+		return operatorId;
+	}
+
+	public void setOperatorId(Object operatorId) {
+		this.operatorId = operatorId;
 	}
 
 	public String getCreateTime() {
@@ -88,6 +117,14 @@ public class UpdateInfo extends BaseModel {
 
 	public void setUpdateTime(String updateTime) {
 		this.updateTime = updateTime;
+	}
+
+	public int getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(int isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 
 }

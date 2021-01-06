@@ -5,6 +5,7 @@ import android.view.View;
 import com.dwz.mvvmdemo.R;
 //import com.dwz.mvvmdemo.commom.di.component.DaggerDPComponent;
 import com.dwz.mvvmdemo.ui.fragment.TestFragment;
+import com.dwz.mvvmdemo.ui.fragment.tabfragment.MineFragment;
 import com.dwz.mvvmdemo.vm.MainVModel;
 
 import java.util.Timer;
@@ -51,31 +52,31 @@ public class MainActivity extends BaseActivity<MainVModel> implements OnTabMenuC
         switch (nowChecked) {
             case 0:
                 // 第一个fragment 点击显示出来
-                initColor(R.color.ff4a3c);
+                setBarColor(R.color.ff4a3c);
                 break;
             case 1:
-                initColor(R.color.ffffff);
+                setBarColor(R.color.ffffff);
                 break;
             case 2:
-                initColor(R.color.ffffff);
+                setBarColor(R.color.ffffff);
                 if (NetworkUtils.getNetWorkState(AppContexts.App()) == NetworkUtils.NETWORK_NONE) {
                     vm.bind.noNetView.setVisibility(View.VISIBLE);
-                }else{
+                } else {
                     vm.bind.noNetView.setVisibility(View.GONE);
                 }
                 break;
             case 3:
-                initColor(R.color.ff4a3c);
+                setBarColor(R.color.c0f6eff);
                 break;
         }
     }
 
-    public void initTab(){
+    public void initTab() {
         tabMenuView = findViewById(R.id.tabmenu);
-        tabMenuView.addMenu("1",R.mipmap.ic_launcher,R.mipmap.ic_launcher, TestFragment.class);
-        tabMenuView.addMenu("2",R.mipmap.ic_launcher,R.mipmap.ic_launcher, TestFragment.class);
-        tabMenuView.addMenu("3",R.mipmap.ic_launcher,R.mipmap.ic_launcher, TestFragment.class);
-        tabMenuView.addMenu("4",R.mipmap.ic_launcher,R.mipmap.ic_launcher, TestFragment.class);
+        tabMenuView.addMenu("1", R.mipmap.ic_launcher, R.mipmap.ic_launcher, TestFragment.class);
+        tabMenuView.addMenu("2", R.mipmap.ic_launcher, R.mipmap.ic_launcher, TestFragment.class);
+        tabMenuView.addMenu("3", R.mipmap.ic_launcher, R.mipmap.ic_launcher, TestFragment.class);
+        tabMenuView.addMenu("4", R.mipmap.ic_launcher, R.mipmap.ic_launcher, MineFragment.class);
         tabMenuView.refreshMenuViewAt(getSupportFragmentManager(), 0);
         tabMenuView.setOnTabMenuClickListener(this);
     }
@@ -89,6 +90,7 @@ public class MainActivity extends BaseActivity<MainVModel> implements OnTabMenuC
      * 双击退出函数
      */
     private static Boolean isExit = false;
+
     private void exitBy2Click() {
         Timer tExit = null;
         if (isExit == false) {
@@ -104,10 +106,6 @@ public class MainActivity extends BaseActivity<MainVModel> implements OnTabMenuC
         } else {
             AppManager.getAppManager().exitApp();
         }
-    }
-
-    public void initColor(int color){
-        StatusBarUtil.setColor(this, getResources().getColor(color));
     }
 
 }

@@ -36,7 +36,7 @@ public class VersionInfoHelper {
             return packageInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
-            return "0";
+            return "1.0.0";
         }
     }
 }
