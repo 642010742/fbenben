@@ -3,9 +3,12 @@ package com.dwz.mvvmdemo.ui.fragment.tabfragment;
 import android.content.Intent;
 import android.view.Gravity;
 import android.view.View;
+
 import com.dwz.mvvmdemo.R;
 import com.dwz.mvvmdemo.ui.activity.CommWebview;
+import com.dwz.mvvmdemo.ui.activity.FeedBackActivity;
 import com.dwz.mvvmdemo.vm.MineVModel;
+
 import library.App.AppConstants;
 import library.baseView.BaseFragment;
 import library.utils.BackGroundUtils;
@@ -52,8 +55,8 @@ public class MineFragment extends BaseFragment<MineVModel> implements View.OnCli
 //                showCommPopLoginOut(1);
                 break;
             case R.id.feedback:
-//                Intent intentFeedBack = new Intent(getActivity(), FeedBackActivity.class);
-//                pStartActivity(intentFeedBack, false);
+                Intent intentFeedBack = new Intent(getActivity(), FeedBackActivity.class);
+                pStartActivity(intentFeedBack, false);
                 break;
         }
     }

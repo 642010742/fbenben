@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
@@ -104,7 +105,7 @@ public abstract class BasicRecycleAdapter<T> extends RecyclerView.Adapter<BasicR
         return mData.size();
     }
 
-    public T getData(int pos){
+    public T getData(int pos) {
         return mData.get(pos);
     }
 
@@ -146,7 +147,7 @@ public abstract class BasicRecycleAdapter<T> extends RecyclerView.Adapter<BasicR
         }
 
 
-        public int getLayoutId(){
+        public int getLayoutId() {
             return itemView.getId();
         }
 
@@ -257,17 +258,18 @@ public abstract class BasicRecycleAdapter<T> extends RecyclerView.Adapter<BasicR
          */
         public ItemViewHolder setImageUrl(int viewId, String imageUrl) {
             ImageView view = getViewById(viewId);
-            Glide.with(context).load(imageUrl).diskCacheStrategy(DiskCacheStrategy.SOURCE).centerCrop().into(view);
+            RequestOptions options = new RequestOptions();
+            options.diskCacheStrategy(DiskCacheStrategy.RESOURCE).centerCrop();
+            Glide.with(context).load(imageUrl).apply(options).into(view);
 
             return this;
         }
 
         public ItemViewHolder setImageUrl(int viewId, String imageUrl, int defaultId) {
             ImageView view = getViewById(viewId);
-            Glide.with(context).load(imageUrl)
-                    .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                    .placeholder(defaultId)
-                    .centerCrop().into(view);
+            RequestOptions options = new RequestOptions();
+            options.diskCacheStrategy(DiskCacheStrategy.RESOURCE).placeholder(defaultId).centerCrop();
+            Glide.with(context).load(imageUrl).apply(options).into(view);
 
             return this;
         }

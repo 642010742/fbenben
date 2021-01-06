@@ -44,6 +44,9 @@
         <activity
             android:name=".ui.activity.CommWebview"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.FeedBackActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

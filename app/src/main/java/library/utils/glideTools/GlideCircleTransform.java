@@ -11,8 +11,12 @@ import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
+import androidx.annotation.NonNull;
+
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
+
+import java.security.MessageDigest;
 
 /**
  * Glide 圆形图片 Transform
@@ -24,11 +28,11 @@ public class GlideCircleTransform extends BitmapTransformation {
     private float mBorderWidth;
 
     public GlideCircleTransform(Context context) {
-        super(context);
+        super();
     }
 
     public GlideCircleTransform(Context context, int borderWidth, int borderColor) {
-        super(context);
+        super();
         mBorderWidth = Resources.getSystem().getDisplayMetrics().density * borderWidth;
 
         mBorderPaint = new Paint();
@@ -70,7 +74,7 @@ public class GlideCircleTransform extends BitmapTransformation {
     }
 
     @Override
-    public String getId() {
-        return getClass().getName();
+    public void updateDiskCacheKey(@NonNull MessageDigest messageDigest) {
+
     }
 }

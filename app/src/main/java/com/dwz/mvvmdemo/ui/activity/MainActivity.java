@@ -41,12 +41,6 @@ public class MainActivity extends BaseActivity<MainVModel> implements OnTabMenuC
         initTab();
     }
 
-
-    @Override
-    public int initStatusBarColor() {
-        return R.color.ff4a3c;
-    }
-
     @Override
     public void onTabMenuClick(View container, int lastChecked, int nowChecked) {
         switch (nowChecked) {

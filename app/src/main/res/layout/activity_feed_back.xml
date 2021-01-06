@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.activity.FeedBackActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/f8f8f8"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_44"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:gravity="center_vertical"
+            android:text="问题和意见"
+            android:textColor="@color/c222222"
+            android:textSize="@dimen/sp_14" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/ffffff"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_12">
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_150"
+                android:background="@color/ffffff"
+                android:gravity="start"
+                android:hint="请描述您遇到的问题，上传页面截图更快解决哦！"
+                android:maxLength="100"
+                android:textColorHint="@color/c222222"
+                android:textSize="@dimen/sp_13" />
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/tvCount"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_gravity="right"-->
+            <!--                android:text="0/100"-->
+            <!--                android:textColor="@color/c2c2c2"-->
+            <!--                android:textSize="@dimen/txt24" />-->
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_53"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_25"
+                android:text="添加图片"
+                android:textColor="@color/c222222"
+                android:textSize="@dimen/sp_14" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_25"
+                android:text="(最多可上传6张图，单张不得超过100M)"
+                android:textColor="@color/c222222"
+                android:textSize="@dimen/sp_12" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/ffffff"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_10" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_0"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:layout_marginRight="@dimen/dp_12"
+            android:layout_marginBottom="@dimen/dp_5"
+            android:background="@color/c0f6eff"
+            android:gravity="center"
+            android:text="提交"
+            android:textColor="@color/ffffff"
+            android:textSize="@dimen/sp_16" />
+    </LinearLayout>
+
+
+</layout>

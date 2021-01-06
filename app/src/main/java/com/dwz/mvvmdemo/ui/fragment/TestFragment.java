@@ -5,7 +5,7 @@ import android.util.DisplayMetrics;
 import com.dwz.mvvmdemo.BuildConfig;
 import com.dwz.mvvmdemo.R;
 import com.dwz.mvvmdemo.vm.TestFragmentVmodel;
-import com.yancy.gallerypick.utils.ScreenUtils;
+import com.luck.picture.lib.tools.ScreenUtils;
 
 import library.baseView.BaseFragment;
 import library.utils.upapk.VersionInfoHelper;

@@ -1,4 +1,4 @@
-package com.dwz.mvvmdemo.util;
+package com.dwz.mvvmdemo.commom;
 
 import android.os.CountDownTimer;
 import android.widget.TextView;

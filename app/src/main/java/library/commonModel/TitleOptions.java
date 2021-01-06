@@ -202,7 +202,7 @@ public class TitleOptions extends BaseModel {
      */
     public TitleOptions(String center_title) {
         this.center_title = center_title;
-        this.left_image = R.mipmap.ic_launcher;
+        this.left_image = R.drawable.back;
         this.left_text = TEXT_NULL;
         this.right_text = TEXT_NULL;
         this.leftImage = left_image == SRC_NULL ? false : true;

@@ -1,11 +1,16 @@
 package library.utils.glideTools;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.widget.ImageView;
+
+import androidx.annotation.DrawableRes;
+import androidx.annotation.IntegerRes;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
+import com.bumptech.glide.request.RequestOptions;
 import com.dwz.mvvmdemo.R;
 
 import library.utils.PixelUtil;
@@ -19,143 +24,108 @@ public class GlideUtils {
 
     /**
      * 加载网络图片
-     *
-     * @param mContext
-     * @param path
-     * @param imageview
      */
-    public static void LoadImage(Context mContext, String path,
-                                 ImageView imageview) {
-        Glide.with(mContext).load(path).centerCrop().placeholder(R.mipmap.ic_launcher)
-                .diskCacheStrategy(DiskCacheStrategy.SOURCE).into(imageview);
+    public static void LoadImage(Context mContext, String path, ImageView imageview) {
+        LoadImage(mContext, path, null, imageview);
+    }
+
+    /**
+     * 加载网络图片
+     */
+    @SuppressLint("CheckResult")
+    public static void LoadImage(Context mContext, String path, @DrawableRes Integer defaultImage, ImageView imageview) {
+        RequestOptions options = new RequestOptions();
+        options.centerCrop()
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
+        if (defaultImage != null) {
+            options.placeholder(defaultImage)
+                    .error(defaultImage);
+        }
+
+        Glide.with(mContext).load(path).apply(options).into(imageview);
     }
 
     /**
      * 加载带尺寸的图片
-     *
-     * @param mContext
-     * @param path
-     * @param Width
-     * @param Height
-     * @param imageview
      */
-    public static void LoadImageWithSize(Context mContext, String path,
-                                         int Width, int Height, ImageView imageview) {
-        Glide.with(mContext).load(path).override(Width, Height)
-                .diskCacheStrategy(DiskCacheStrategy.SOURCE).into(imageview);
+    public static void LoadImageWithSize(Context mContext, String path, int Width, int Height, ImageView imageview) {
+        RequestOptions options = new RequestOptions();
+        options.override(Width, Height).diskCacheStrategy(DiskCacheStrategy.RESOURCE);
+        Glide.with(mContext).load(path).apply(options).into(imageview);
     }
 
-
     /**
-     * 加载本地图片
-     *
-     * @param mContext
-     * @param path
-     * @param imageview
+     * 加载圆形图片
      */
-    public static void LoadImageWithLocation(Context mContext, Integer path,
-                                             ImageView imageview) {
-        Glide.with(mContext).load(path).diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                .into(imageview);
+    public static void LoadCircleImage(Context mContext, String path, ImageView imageview) {
+        LoadCircleImage(mContext, path, null, imageview);
     }
 
+    /**
+     * 加载圆形图片
+     */
+    @SuppressLint("CheckResult")
+    public static void LoadCircleImage(Context mContext, String path, @DrawableRes Integer defaultImage, ImageView imageview) {
+        RequestOptions options = new RequestOptions();
+        options.centerCrop()
+                .transform(new GlideCircleTransform(mContext))
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
+        if (defaultImage != null) {
+            options.placeholder(defaultImage)
+                    .error(defaultImage);
+        }
+        Glide.with(mContext).load(path).apply(options).into(imageview);
+    }
 
     /**
-     * 圆形加载
-     *
-     * @param mContext
-     * @param path
-     * @param imageview
+     * 加载圆角图片
+     * 默认圆角4px 无默认图片
      */
-    public static void LoadCircleImage(Context mContext, String path,
-                                       ImageView imageview) {
-        if (mContext != null)
-            Glide.with(mContext).load(path).centerCrop()
-                    .placeholder(R.mipmap.ic_launcher)
-                    .transform(new GlideCircleTransform(mContext))
-                    .diskCacheStrategy(DiskCacheStrategy.SOURCE).into(imageview);
+    public static void LoadRoundImage(Context mContext, String path, ImageView imageview) {
+        LoadRoundImage(mContext, path, null, 4, imageview);
     }
 
     /**
      * 加载圆角图片
      * 默认圆角4px
-     *
-     * @param mContext
-     * @param path
-     * @param imageview
      */
-    public static void LoadRoundImage(Context mContext, String path,
+    public static void LoadRoundImage(Context mContext, String path, @DrawableRes Integer defaultImage,
                                       ImageView imageview) {
-        if (mContext != null)
-            Glide.with(mContext).load(path).centerCrop().placeholder(R.mipmap.gallery_pick_photo)
-                    .transform(new GlideRoundTransform(mContext))
-                    .diskCacheStrategy(DiskCacheStrategy.SOURCE).into(imageview);
+        LoadRoundImage(mContext, path, defaultImage, 4, imageview);
     }
 
 
     /**
      * 加载圆角图片
-     *
-     * @param mContext
-     * @param path
-     * @param imageview
-     * @param px
      */
-    public static void LoadRoundImage(Context mContext, String path,
-                                      ImageView imageview, int px) {
-        if (mContext != null)
-            Glide.with(mContext).load(path).centerCrop().placeholder(R.mipmap.gallery_pick_photo)
-                    .transform(new GlideRoundTransform(mContext, PixelUtil.px2dp(px)))
-                    .diskCacheStrategy(DiskCacheStrategy.SOURCE).into(imageview);
-    }
-
-    /**
-     * @param context
-     * @param url
-     * @param imgView
-     */
-    public static void loadImage(Context context, String url, ImageView imgView) {
-        loadImage(context, url, imgView, 0, null);
-    }
-
-    /**
-     * @param context
-     * @param url
-     * @param imgView
-     * @param defultImg
-     */
-    public static void loadImage(Context context, String url, ImageView imgView, int defultImg) {
-        loadImage(context, url, imgView, defultImg, null);
-    }
-
-    /**
-     * @param context
-     * @param url
-     * @param imgView
-     * @param defultImg 自定义圆角图片
-     */
-    public static void loadImage(Context context, String url, ImageView imgView, int defultImg,
-                                 BitmapTransformation transcoder) {
-        if (transcoder == null) {
-
-            Glide.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(defultImg).dontAnimate()
-                    .into(imgView);
-        } else {
-
-            Glide.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(defultImg).dontAnimate()
-                    .transform(transcoder).into(imgView);
+    @SuppressLint("CheckResult")
+    public static void LoadRoundImage(Context mContext, String path, @DrawableRes Integer defaultImage,
+                                      int px, ImageView imageview) {
+        RequestOptions options = new RequestOptions();
+        options.centerCrop()
+                .transform(new GlideRoundTransform(mContext, PixelUtil.px2dp(px)))
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
+        if (defaultImage != null) {
+            options.placeholder(defaultImage)
+                    .error(defaultImage);
         }
+        Glide.with(mContext).load(path).apply(options).into(imageview);
     }
 
 
     /**
-     * @param context
-     * @param url
-     * @param imgView
-     * @param defultImg GIF
+     * 加载gif图
      */
-    public static void loadGifImage(Context context, String url, ImageView imgView, int defultImg) {
-        Glide.with(context).load(url).asGif().diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder(defultImg).crossFade().dontAnimate()
+    @SuppressLint("CheckResult")
+    public static void loadGifImage(Context context, String url, @DrawableRes Integer defaultImag,
+                                    ImageView imgView) {
+        RequestOptions options = new RequestOptions();
+        options.diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                .placeholder(defaultImag)
+                .error(defaultImag)
+                .dontAnimate();
+
+        Glide.with(context).asGif().load(url).apply(options)
                 .into(imgView);
     }
 

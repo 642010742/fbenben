@@ -65,8 +65,6 @@ public abstract class BaseActivity<VM extends BaseVModel> extends AppCompatActiv
             typeTitle(titleOptions, getIntent());
             AppManager.getAppManager().activityCreated(this);
             this.title.setTitle(titleOptions);
-            // 修改状态栏颜色
-            StatusBarUtil.setColor(this, ContextCompat.getColor(mContext, initStatusBarColor()));
             vm.bind = DataBindingUtil.inflate(getLayoutInflater(), LayoutId(), (ViewGroup) this.title.getRoot(), true);
             if (titleOptions != null)
                 title.baseLayoutTitle.llBaseTitle.setVisibility(View.VISIBLE);
@@ -106,11 +104,6 @@ public abstract class BaseActivity<VM extends BaseVModel> extends AppCompatActiv
     @Override
     public TitleOptions title() {
         return null;
-    }
-
-    @Override
-    public int initStatusBarColor() {
-        return android.R.color.white;
     }
 
     @Override
@@ -181,6 +174,7 @@ public abstract class BaseActivity<VM extends BaseVModel> extends AppCompatActiv
     @Override
     protected void onResume() {
         super.onResume();
+        StatusBarUtil.setLightModeUnFullScreen(this);
         if (this instanceof MainActivity) {
             // 需要做下特殊处理
         } else {

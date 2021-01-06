@@ -6,11 +6,7 @@ package library.App;
 public class AppConstants {
 
     public static final String[] NEW_URL = {"fragrantLight", "cameraLight", "smog"};
-    public static String selectDownPrice;
-    public static String selectUpPrice;
-    public static final int CODE_GALLERY_REQUEST = 0xa0;
-    public static final int CODE_CAMERA_REQUEST = 0xa1;
-    public static final int CODE_RESULT_REQUEST = 0xa2;
+    public static final int REQUEST_CODE_CHOOSE = 0xa1;
     public static double defTotal = 23 * 1024 * 1024;
 
     public class IntentKey {
@@ -22,6 +18,6 @@ public class AppConstants {
 
     public class EventKey {
         //评论点击增加图片
-        public static final int defaultImg = 00000001;
+        public static final int aaa = 00000001;
     }
 }
