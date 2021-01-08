@@ -1,61 +1,61 @@
 package com.dwz.mvvmdemo.ui.activity;
 
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
-import android.view.View;
-import android.webkit.WebChromeClient;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
-import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.TextView;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.dwz.mvvmdemo.R;
-
+import com.dwz.mvvmdemo.vm.CommWebViewVModel;
 import library.App.AppConstants;
-import library.utils.LogUtils;
-
+import library.baseView.BaseActivity;
+import library.commonModel.TitleOptions;
 import static android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW;
 
-public class CommWebview extends AppCompatActivity {
-
-    private WebView comWeb;
+public class CommWebview extends BaseActivity<CommWebViewVModel> {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_comm_webview);
+    public TitleOptions title() {
+        return new TitleOptions();
+    }
 
-        comWeb = findViewById(R.id.comWeb);
-        TextView comWebTitle = findViewById(R.id.title);
-
+    @Override
+    public void typeTitle(TitleOptions titleOptions, Intent intent) {
+        super.typeTitle(titleOptions, intent);
         String title = getIntent().getStringExtra(AppConstants.IntentKey.WEB_TITLE);
+        titleOptions.setLeft_image(R.drawable.back);
+        titleOptions.setCenter_title(title);
+    }
+
+    @Override
+    public Class<CommWebViewVModel> getVMClass() {
+        return CommWebViewVModel.class;
+    }
+
+    @Override
+    public int LayoutId() {
+        return R.layout.activity_comm_webview;
+    }
+
+    @Override
+    public void initViews() {
+
         String url = getIntent().getStringExtra(AppConstants.IntentKey.WEB_URL);
-
-        comWebTitle.setText(title);
-
         initWebSetting();
         setWebviewClient();
 
         if (!TextUtils.isEmpty(url)) {
             if ((url.startsWith("http"))) {
-                comWeb.loadUrl(url);
+                vm.bind.comWeb.loadUrl(url);
             } else {
                 //解决6.0乱码问题
-                comWeb.loadDataWithBaseURL(null, getHtmlData(url), "text/html", "utf-8", null);
+                vm.bind.comWeb.loadDataWithBaseURL(null, getHtmlData(url), "text/html", "utf-8", null);
             }
         }
-        initListener();
     }
 
     //初始化websetting
     private void initWebSetting() {
-        WebSettings webSettings = comWeb.getSettings();
+        WebSettings webSettings = vm.bind.comWeb.getSettings();
         //设置背景颜色
 //        vm.bind.comWeb.setBackgroundColor(0);
         //是否允许执行js
@@ -101,8 +101,7 @@ public class CommWebview extends AppCompatActivity {
     }
 
     private void setWebviewClient() {
-//        comWeb.setWebChromeClient(new WebChromeClient());
-        comWeb.setWebViewClient(new WebViewClient());
+        vm.bind.comWeb.setWebViewClient(new WebViewClient());
 //        comWeb.setWebViewClient(new WebViewClient() {
 //            @Override
 //            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
@@ -124,14 +123,6 @@ public class CommWebview extends AppCompatActivity {
 //        });
     }
 
-    private void initListener() {
-        findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-    }
 
     private String getHtmlData(String bodyHTML) {
         String head = "<head>" +
@@ -144,16 +135,16 @@ public class CommWebview extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        if (comWeb.canGoBack()) {
-            comWeb.goBack();
+        if (vm.bind.comWeb.canGoBack()) {
+            vm.bind.comWeb.goBack();
             return;
         } else {
             super.onBackPressed();
         }
 
-        if (comWeb != null) {
-            comWeb.clearCache(true);
-            comWeb.clearHistory();
+        if (vm.bind.comWeb != null) {
+            vm.bind.comWeb.clearCache(true);
+            vm.bind.comWeb.clearHistory();
         }
     }
 }
