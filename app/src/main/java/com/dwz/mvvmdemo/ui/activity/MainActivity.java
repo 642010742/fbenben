@@ -101,5 +101,4 @@ public class MainActivity extends BaseActivity<MainVModel> implements OnTabMenuC
             AppManager.getAppManager().exitApp();
         }
     }
-
 }
