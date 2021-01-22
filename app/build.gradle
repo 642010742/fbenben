@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.dwz.mvvmdemo"
@@ -22,13 +21,13 @@ android {
 
         def aboutTitle = System.getenv("ABOUTTITLE")
 //        buildConfigField "String", "BUILD_TYPE", project.BUILD_TYPE
-        buildConfigField "String", "API_ENVIRONMENT", project.API_ENVIRONMENT 
+        buildConfigField "String", "API_ENVIRONMENT", project.API_ENVIRONMENT
         buildConfigField "String", "ABOUTTITLE", project.ABOUTTITLE
 //        buildConfigField "String", "ABOUTTITLE", aboutTitle ? aboutTitle : ABOUTTITLE
 
     }
-    dataBinding {
-        enabled = true
+    buildFeatures {
+        dataBinding = true
     }
     configurations.all {
         resolutionStrategy.eachDependency { DependencyResolveDetails details ->
@@ -42,26 +41,18 @@ android {
     }
 
     signingConfigs {
-
         release {
             keyAlias RELEASE_KEY_ALIAS
             keyPassword RELEASE_KEY_PASSWORD
             storeFile file(RELEASE_STORE_FILE)
             storePassword RELEASE_STORE_PASSWORD
         }
-
-//        release {
-//            keyAlias 'dsmall'
-//            keyPassword 'dsmall2020'
-//            storeFile file('../dsmall.jks')
-//            storePassword 'dsmall2020'
-//        }
-//        debug {
-//            keyAlias 'dsmall'
-//            keyPassword 'dsmall2020'
-//            storeFile file('../dsmall.jks')
-//            storePassword 'dsmall2020'
-//        }
+        debug {
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword RELEASE_KEY_PASSWORD
+            storeFile file(RELEASE_STORE_FILE)
+            storePassword RELEASE_STORE_PASSWORD
+        }
     }
 
     buildTypes {
@@ -97,9 +88,8 @@ def getDate() {
 }
 
 def getEnvironment(String environmentStr) {
-    return environmentStr.substring(1, environmentStr.length()-1)
+    return environmentStr.substring(1, environmentStr.length() - 1)
 }
-
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.0.0'
@@ -145,6 +135,4 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
 }
-repositories {
-    mavenCentral()
-}
+
