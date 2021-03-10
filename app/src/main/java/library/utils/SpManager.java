@@ -69,6 +69,26 @@ public class SpManager {
 
     }
 
+    /**
+     * 设置登录int
+     * @param key
+     * @param value
+     */
+    public static void setLInt(String key, int value) {
+        spLogin.edit().putInt(key, value).commit();
+    }
+
+    /***
+     * 获取登录int
+     *
+     * @param key
+     * @return
+     */
+    public static int getLInt(String key) {
+        return spLogin.getInt(key, 0);
+
+    }
+
     /***
      * 清除全局信息
      */
