@@ -14,7 +14,7 @@ import library.BaseAdapter.dadapter.helper.ItemViewDelegate;
 import library.BaseAdapter.dadapter.helper.ItemViewDelegateManager;
 import library.BaseAdapter.dadapter.holder.XXViewHolder;
 import library.commonModel.BaseModel;
-import library.listener.OnItemClickListener;
+import library.BaseAdapter.dadapter.listener.OnItemClickListener;
 import library.utils.LogUtils;
 
 /**
