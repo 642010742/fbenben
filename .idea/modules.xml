@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="fbenben/app" />
-      <module fileurl="file://$PROJECT_DIR$/fbenben.iml" filepath="$PROJECT_DIR$/fbenben.iml" group="fbenben" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/fbenben.iml" filepath="$PROJECT_DIR$/.idea/modules/fbenben.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/fbenben.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/fbenben.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/library/fbenben.library.iml" filepath="$PROJECT_DIR$/.idea/modules/library/fbenben.library.iml" />
     </modules>
   </component>
 </project>

@@ -1,0 +1,74 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.zmf.library"
+        minSdkVersion 23
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        multiDexEnabled true
+        dexOptions {
+//            incremental true
+            preDexLibraries = false
+            javaMaxHeapSize "2g" //4g
+        }
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        dataBinding = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation 'androidx.multidex:multidex:2.0.1'
+    // Json解析库（Gson）
+    implementation 'com.google.code.gson:gson:2.8.6'
+    // OkHttp3
+    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
+    // Retrofit2
+    implementation 'com.squareup.retrofit2:retrofit:2.6.1'
+    // Retrofit RxJava支持库
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.1'
+    // Retrofit2 - Gson 转换器
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.1'
+    // RxJava2
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.12'
+    // RxAndroid
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'com.blankj:utilcode:1.20.3'
+    implementation 'com.kongzue.dialog_v3:dialog:3.1.8'
+    implementation 'org.greenrobot:eventbus:3.0.0'
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+    //图片选择
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'
+}

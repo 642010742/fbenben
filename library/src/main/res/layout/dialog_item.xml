@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.dwz.library.commonModel.DialogModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/sp_15"
+        android:layout_marginRight="@dimen/sp_15"
+        android:background="@drawable/comm_full_fff_8"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txSharePhoneTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:paddingTop="@dimen/dp_12"
+            android:singleLine="true"
+            android:text="@{model.dialongTitle}"
+            android:textColor="@color/c333333"
+            android:textSize="@dimen/sp_13"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="@dimen/dp_7"
+            android:paddingBottom="@dimen/dp_13"
+            android:text="@{model.dialogContent}"
+            android:textColor="@color/c333333"
+            android:textSize="@dimen/sp_6" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ebebeb" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_24"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txCancelChangeName"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@{model.dialogCancel}"
+                android:textColor="@color/c333333"
+                android:textSize="@dimen/sp_13" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="#ebebeb" />
+
+            <TextView
+                android:id="@+id/txSureChangeName"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#f38017"
+                android:gravity="center"
+                android:text="@{model.dialogSure}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_8" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>
