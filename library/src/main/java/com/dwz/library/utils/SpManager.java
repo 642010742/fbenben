@@ -88,6 +88,27 @@ public class SpManager {
 
     }
 
+    /**
+     * 设置登录Long
+     *
+     * @param key
+     * @param value
+     */
+    public static void setLLong(String key, long value) {
+        spLogin.edit().putLong(key, value).commit();
+    }
+
+    /***
+     * 获取登录Long
+     *
+     * @param key
+     * @return
+     */
+    public static long getLLong(String key) {
+        return spLogin.getLong(key, 0);
+
+    }
+
     /***
      * 清除全局信息
      */
