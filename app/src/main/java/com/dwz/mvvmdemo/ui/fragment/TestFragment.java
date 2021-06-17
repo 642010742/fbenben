@@ -2,13 +2,12 @@ package com.dwz.mvvmdemo.ui.fragment;
 
 import android.util.DisplayMetrics;
 
+import com.dwz.library.baseView.BaseFragment;
+import com.dwz.library.utils.upapk.VersionInfoHelper;
 import com.dwz.mvvmdemo.BuildConfig;
 import com.dwz.mvvmdemo.R;
 import com.dwz.mvvmdemo.vm.TestFragmentVmodel;
 import com.luck.picture.lib.tools.ScreenUtils;
-
-import library.baseView.BaseFragment;
-import library.utils.upapk.VersionInfoHelper;
 
 /**
  * @author dongweizhou

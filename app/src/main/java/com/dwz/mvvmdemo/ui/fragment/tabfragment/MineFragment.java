@@ -3,16 +3,15 @@ package com.dwz.mvvmdemo.ui.fragment.tabfragment;
 import android.content.Intent;
 import android.view.View;
 
+import com.dwz.library.baseView.BaseFragment;
+import com.dwz.library.utils.pop.ISelectListener;
+import com.dwz.library.utils.pop.PopUtils;
+import com.dwz.library.utils.upapk.VersionInfoHelper;
 import com.dwz.mvvmdemo.R;
 import com.dwz.mvvmdemo.ui.activity.FeedBackActivity;
 
-import library.utils.pop.ISelectListener;
-import library.utils.pop.PopUtils;
-
 import com.dwz.mvvmdemo.vm.MineVModel;
 
-import library.baseView.BaseFragment;
-import library.utils.upapk.VersionInfoHelper;
 
 public class MineFragment extends BaseFragment<MineVModel> implements View.OnClickListener {
     @Override

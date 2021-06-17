@@ -1,6 +1,7 @@
 package com.dwz.mvvmdemo.model;
 
-import library.commonModel.BaseModel;
+
+import com.dwz.library.commonModel.BaseModel;
 
 /**
  * @author dongweizhou

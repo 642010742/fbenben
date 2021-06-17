@@ -4,11 +4,12 @@ import android.content.Intent;
 import android.text.TextUtils;
 import android.webkit.WebSettings;
 import android.webkit.WebViewClient;
+
+import com.dwz.library.App.AppConstants;
+import com.dwz.library.baseView.BaseActivity;
+import com.dwz.library.commonModel.TitleOptions;
 import com.dwz.mvvmdemo.R;
 import com.dwz.mvvmdemo.vm.CommWebViewVModel;
-import library.App.AppConstants;
-import library.baseView.BaseActivity;
-import library.commonModel.TitleOptions;
 import static android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW;
 
 public class CommWebview extends BaseActivity<CommWebViewVModel> {

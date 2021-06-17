@@ -1,9 +1,9 @@
 package com.dwz.mvvmdemo.vm;
 
 
+import com.dwz.library.baseVModel.BaseVModel;
 import com.dwz.mvvmdemo.databinding.ActivityLoginBinding;
 
-import library.baseVModel.BaseVModel;
 
 public class LoginVModel extends BaseVModel<ActivityLoginBinding> {
 

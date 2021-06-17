@@ -1,6 +1,7 @@
 package com.dwz.mvvmdemo.bean;
 
-import library.Retrofit_Http.RequBean.baseBean.BaseRequestBean;
+
+import com.dwz.library.Retrofit_Http.RequBean.baseBean.BaseRequestBean;
 
 /**
  * @author dongweizhou

@@ -8,20 +8,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
 
+import com.dwz.library.App.AppConstants;
+import com.dwz.library.baseView.BaseActivity;
+import com.dwz.library.commonModel.TitleOptions;
+import com.dwz.library.photoselect.PhotoConfigHelper;
+import com.dwz.library.utils.ToastUtil;
+import com.dwz.library.utils.permission.MPermissionUtils;
 import com.dwz.mvvmdemo.R;
 import com.dwz.mvvmdemo.vm.FeedBackVModel;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.entity.LocalMedia;
 
 import java.util.List;
-
-import library.App.AppConstants;
-import library.baseView.BaseActivity;
-import library.common.eventbus.model.EventModel;
-import library.commonModel.TitleOptions;
-import library.photoselect.PhotoConfigHelper;
-import library.utils.ToastUtil;
-import library.utils.permission.MPermissionUtils;
 
 /**
  * 意见反馈

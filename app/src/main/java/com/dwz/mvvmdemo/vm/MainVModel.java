@@ -2,10 +2,9 @@ package com.dwz.mvvmdemo.vm;
 
 
 
+import com.dwz.library.baseVModel.BaseVModel;
+import com.dwz.library.utils.ToastUtil;
 import com.dwz.mvvmdemo.databinding.ActivityMainBinding;
-
-import library.baseVModel.BaseVModel;
-import library.utils.ToastUtil;
 
 /**
  * 处理业务逻辑

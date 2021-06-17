@@ -1,8 +1,8 @@
 package com.dwz.mvvmdemo.vm;
 
+import com.dwz.library.baseVModel.BaseVModel;
 import com.dwz.mvvmdemo.databinding.FragmentTestBinding;
 
-import library.baseVModel.BaseVModel;
 
 public class TestFragmentVmodel extends BaseVModel<FragmentTestBinding> {
     @Override

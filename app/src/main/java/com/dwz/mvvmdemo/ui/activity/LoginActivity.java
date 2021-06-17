@@ -6,15 +6,13 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 
+import com.dwz.library.baseView.BaseActivity;
+import com.dwz.library.utils.CheckUtils;
+import com.dwz.library.utils.StatusBarUtil;
+import com.dwz.library.utils.ToastUtil;
 import com.dwz.mvvmdemo.R;
 import com.dwz.mvvmdemo.commom.MyCountDownTimer;
 import com.dwz.mvvmdemo.vm.LoginVModel;
-
-import library.baseView.BaseActivity;
-import library.utils.CheckUtils;
-import library.utils.StatusBarUtil;
-import library.utils.ToastUtil;
-
 public class LoginActivity extends BaseActivity<LoginVModel> implements View.OnClickListener {
 
     @Override

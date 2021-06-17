@@ -2,13 +2,13 @@ package com.dwz.mvvmdemo.presenter;
 
 import android.content.Context;
 
+import com.dwz.library.Retrofit_Http.RequBean.RequestBean;
+import com.dwz.library.Retrofit_Http.RequBean.ResponseBean;
+import com.dwz.library.Retrofit_Http.RxRetrofitClient;
+import com.dwz.library.Retrofit_Http.icallBack.ICallBack;
+import com.dwz.library.interfaces.IPBaseCallBack;
+import com.dwz.library.presenter.BasePresenter;
 import io.reactivex.disposables.CompositeDisposable;
-import library.Retrofit_Http.RequBean.RequestBean;
-import library.Retrofit_Http.RequBean.ResponseBean;
-import library.Retrofit_Http.RxRetrofitClient;
-import library.Retrofit_Http.icallBack.ICallBack;
-import library.interfaces.IPBaseCallBack;
-import library.presenter.BasePresenter;
 
 public class PComm extends BasePresenter {
     private IPBaseCallBack ipBaseCallBack;

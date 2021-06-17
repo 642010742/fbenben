@@ -10,7 +10,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="library.App.AppContexts"
+        android:name="com.dwz.library.App.AppContexts"
         android:allowBackup="true"
         android:appComponentFactory="fbenben"
         android:icon="@mipmap/ic_launcher"

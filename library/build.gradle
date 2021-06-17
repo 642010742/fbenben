@@ -1,13 +1,11 @@
-plugins {
-    id 'com.android.application'
-}
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.zmf.library"
+//        applicationId "com.zmf.library"
         minSdkVersion 23
         targetSdkVersion 29
         versionCode 1

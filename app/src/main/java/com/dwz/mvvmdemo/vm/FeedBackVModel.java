@@ -3,6 +3,13 @@ package com.dwz.mvvmdemo.vm;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.dwz.library.BaseAdapter.fadapter.baseAdapter.recyclerbasic.CommnBindRecycleAdapter;
+import com.dwz.library.baseVModel.BaseVModel;
+import com.dwz.library.interfaces.IPBaseCallBack;
+import com.dwz.library.photoselect.PhotoModel;
+import com.dwz.library.photoselect.PhotoSelectAdapter;
+import com.dwz.library.utils.LogUtils;
+import com.dwz.library.utils.ToastUtil;
 import com.dwz.mvvmdemo.R;
 import com.dwz.mvvmdemo.databinding.ActivityFeedBackBinding;
 import com.dwz.mvvmdemo.ui.activity.FeedBackActivity;
@@ -12,14 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.disposables.CompositeDisposable;
-import library.BaseAdapter.fadapter.baseAdapter.recyclerbasic.CommnBindRecycleAdapter;
-import library.baseVModel.BaseVModel;
-import library.interfaces.IPBaseCallBack;
-import library.photoselect.PhotoModel;
-import library.photoselect.PhotoSelectAdapter;
-import library.utils.LogUtils;
-import library.utils.ToastUtil;
-
 /**
  * @author Administrator
  * @Create 2019/7/23
