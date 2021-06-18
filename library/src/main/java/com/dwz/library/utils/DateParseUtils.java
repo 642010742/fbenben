@@ -121,6 +121,20 @@ public class DateParseUtils {
     }
 
     /**
+     * 时间语义化
+     * 将s转化为00:00,这里的s不是时间戳
+     * 使用场景:拿到语音时长为230s:将他转化为00:00格式
+     * @param duration
+     * @return
+     */
+    public static String getSToSemantic(int duration) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm:ss");
+        Date date = new Date(duration);
+        String format = simpleDateFormat.format(date);
+        return format;
+    }
+
+    /**
      * 获取时间
      * @param date
      * @param pattern
