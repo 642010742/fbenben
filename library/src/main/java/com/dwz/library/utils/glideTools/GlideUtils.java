@@ -74,6 +74,25 @@ public class GlideUtils {
     }
 
     /**
+     * 可以加载视频图片第一帧
+     *
+     * @param mContext
+     * @param path
+     * @param imageview
+     */
+    public static void LoadRoundVideoImage(Context mContext, String path, ImageView imageview) {
+        RequestOptions options = new RequestOptions();
+        options.centerCrop()
+                .transform(new GlideRoundTransform(mContext, 4));
+//                .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
+//        if (defaultImage != null) {
+//            options.placeholder(defaultImage)
+//                    .error(defaultImage);
+//        }
+        Glide.with(mContext).load(path).apply(options).into(imageview);
+    }
+
+    /**
      * 加载圆角图片
      * 默认圆角4px 无默认图片
      */
